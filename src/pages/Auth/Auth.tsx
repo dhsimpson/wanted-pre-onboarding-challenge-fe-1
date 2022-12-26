@@ -41,6 +41,7 @@ function Auth() {
   const authMutation = useMutation(authApi, {
     onSuccess: data => {
       localStorage.setItem('authtoken', data.data.token);
+      alert('로그인 되었습니다.');
       navigate('/');
     },
     onError: e => {
