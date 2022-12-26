@@ -2,6 +2,7 @@ import { TextField, Button, Box, Grid } from '@mui/material';
 import { useState } from 'react';
 import axios from 'axios';
 import { useMutation } from 'react-query';
+import { useNavigate } from 'react-router-dom';
 
 interface AuthMutationParams {
   email: string;
@@ -35,9 +36,12 @@ const authApi = (params: AuthMutationParams) =>
 
 function Auth() {
   const [submitType, setSubmitType] = useState('');
+  const navigate = useNavigate();
+
   const authMutation = useMutation(authApi, {
     onSuccess: data => {
       localStorage.setItem('authtoken', data.data.token);
+      navigate('/');
     },
     onError: e => {
       console.error(e);
