@@ -8,6 +8,12 @@ interface AuthMutationParams {
   password: string;
   url: string;
 }
+interface AuthMutationResponse {
+  token: string;
+  data: {
+    token: string;
+  };
+}
 
 const validate = (check: (str: string) => boolean, data: string, message: string) => {
   if (!check(data)) {
@@ -22,13 +28,16 @@ const checkEmail = (str: string) => (str.includes('@') && str.includes('.') ? tr
 const checkPassword = (str: string) => str.length >= 8;
 
 const authApi = (params: AuthMutationParams) =>
-  axios.post(`http://localhost:8080${params.url}`, { email: params.email, password: params.password });
+  axios.post<any, AuthMutationResponse>(`http://localhost:8080${params.url}`, {
+    email: params.email,
+    password: params.password,
+  });
 
 function Auth() {
   const [submitType, setSubmitType] = useState('');
   const authMutation = useMutation(authApi, {
     onSuccess: data => {
-      console.log(data);
+      localStorage.setItem('authtoken', data.data.token);
     },
     onError: e => {
       console.error(e);
