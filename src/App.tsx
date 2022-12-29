@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { QueryClientProvider, QueryClient } from 'react-query';
 import Main from './pages/main/Main';
 import Auth from './pages/Auth/Auth';
+import Todos from './pages/Todos/Todos';
 
 const queryClient = new QueryClient();
 
@@ -14,6 +15,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Main />}></Route>
             <Route path="/auth" element={<Auth />}></Route>
+            <Route path="/todos" element={<Todos />}></Route>
           </Routes>
         </BrowserRouter>
       </QueryClientProvider>
