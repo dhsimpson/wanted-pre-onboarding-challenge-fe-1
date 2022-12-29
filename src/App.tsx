@@ -4,6 +4,7 @@ import { QueryClientProvider, QueryClient } from 'react-query';
 import Main from './pages/main/Main';
 import Auth from './pages/Auth/Auth';
 import Todos from './pages/Todos/Todos';
+import TodoDetail from './pages/Todos/TodoDetail/TodoDetail';
 
 const queryClient = new QueryClient();
 
@@ -15,7 +16,9 @@ function App() {
           <Routes>
             <Route path="/" element={<Main />}></Route>
             <Route path="/auth" element={<Auth />}></Route>
-            <Route path="/todos" element={<Todos />}></Route>
+            <Route path="/todos" element={<Todos />}>
+              <Route path=":id" element={<TodoDetail />}></Route>
+            </Route>
           </Routes>
         </BrowserRouter>
       </QueryClientProvider>
