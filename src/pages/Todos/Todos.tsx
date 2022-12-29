@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useQuery } from 'react-query';
+import { Link } from 'react-router-dom';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { Todo, todosApi } from '../../api/todoApi';
 
@@ -33,9 +34,14 @@ function Todos() {
           <ul>
             {/* todo 클릭 시 상세영역 보기모드 open */}
             {todoList.map((todo, idx) => (
-              <li key={idx}>
-                <p>{todo.title}</p>
-                <p>{todo.content}</p>
+              <li key={idx} style={{ display: 'flex' }}>
+                <div>
+                  <p>{todo.title}</p>
+                  <p>{todo.content}</p>
+                </div>
+                <Link to={`${todo.id}`}>
+                  <button>자세히보기</button>
+                </Link>
               </li>
             ))}
           </ul>
