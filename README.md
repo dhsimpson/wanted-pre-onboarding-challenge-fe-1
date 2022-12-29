@@ -18,6 +18,8 @@ c.f.) [\*.test.tsx 오류 해결 방법](https://mmsesang.tistory.com/entry/Yarn
 
 c.f.) [airbnb eslint + prettier 셋팅](https://velog.io/@9rganizedchaos/%EA%B0%9C%EB%B0%9C-%EC%B4%88%EA%B8%B0-%EC%84%B8%ED%8C%85%ED%95%98%EA%B8%B0-ESLint-eslint-config-airbnb-typescript-Prettier-React-TypeScript)
 
+c.f.) [react nested route : /todos/:id](https://www.robinwieruch.de/react-router-nested-routes/)
+
 # Package Manager
 
 - version : yarn berry (3.x.x, yarn LTS)
