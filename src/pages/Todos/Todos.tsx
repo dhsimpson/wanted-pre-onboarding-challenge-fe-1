@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
+import { useQuery } from 'react-query';
 import { Outlet, useNavigate } from 'react-router-dom';
+import { Todo, todosApi } from '../../api/todoApi';
 
 function Todos() {
   const navigate = useNavigate();
@@ -13,6 +15,10 @@ function Todos() {
     }
   });
 
+  const { data, isLoading, error } = useQuery(['todos'], () => todosApi(authToken ?? ''));
+
+  const todoList: Todo[] = data?.data?.data ?? [];
+
   // Todo 목록
   // 등록 버튼
   // 상세 클릭하면 route push
@@ -21,11 +27,19 @@ function Todos() {
       Todo 목록 화면입니다.
       <div>
         목록 영역
-        <ul>
-          {/* todo 클릭 시 상세영역 보기모드 open */}
-          <li>todo1</li>
-          <li>todo2</li>
-        </ul>
+        {isLoading ? (
+          <div>loading</div>
+        ) : (
+          <ul>
+            {/* todo 클릭 시 상세영역 보기모드 open */}
+            {todoList.map((todo, idx) => (
+              <li key={idx}>
+                <p>{todo.title}</p>
+                <p>{todo.content}</p>
+              </li>
+            ))}
+          </ul>
+        )}
         <button>추가버튼</button>
       </div>
       <Outlet></Outlet>
