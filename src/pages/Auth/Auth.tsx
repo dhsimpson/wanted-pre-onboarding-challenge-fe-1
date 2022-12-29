@@ -1,20 +1,8 @@
 import { TextField, Button, Box, Grid } from '@mui/material';
 import { useState } from 'react';
-import axios from 'axios';
 import { useMutation } from 'react-query';
 import { useNavigate } from 'react-router-dom';
-
-interface AuthMutationParams {
-  email: string;
-  password: string;
-  url: string;
-}
-interface AuthMutationResponse {
-  token: string;
-  data: {
-    token: string;
-  };
-}
+import { authApi } from '../../api/authApi';
 
 const validate = (check: (str: string) => boolean, data: string, message: string) => {
   if (!check(data)) {
@@ -27,12 +15,6 @@ const validate = (check: (str: string) => boolean, data: string, message: string
 const checkEmail = (str: string) => (str.includes('@') && str.includes('.') ? true : false);
 
 const checkPassword = (str: string) => str.length >= 8;
-
-const authApi = (params: AuthMutationParams) =>
-  axios.post<any, AuthMutationResponse>(`http://localhost:8080${params.url}`, {
-    email: params.email,
-    password: params.password,
-  });
 
 function Auth() {
   const [submitType, setSubmitType] = useState('');
