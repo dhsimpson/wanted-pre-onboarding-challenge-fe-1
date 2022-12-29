@@ -9,7 +9,7 @@ function TodoDetail() {
 
   const todo: Todo | undefined = data?.data?.data ?? undefined;
   console.log(todo);
-
+  //TODO : error 시에 alert 및 뒤로가기
   return (
     <div>
       {isLoading && todo != undefined ? (

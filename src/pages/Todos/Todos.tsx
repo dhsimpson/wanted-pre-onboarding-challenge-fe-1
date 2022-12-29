@@ -17,6 +17,7 @@ function Todos() {
   });
 
   const { data, isLoading, error } = useQuery(['todos'], () => todosApi(authToken ?? ''));
+  //TODO : error 시에 alert 및 뒤로가기
 
   const todoList: Todo[] = data?.data?.data ?? [];
 
