@@ -32,7 +32,7 @@ function Todos() {
         ) : (
           <ul>
             {todoList.map((todo, idx) => (
-              <TodoItem todo={todo} idx={idx}></TodoItem>
+              <TodoItem todo={todo} key={idx}></TodoItem>
             ))}
           </ul>
         )}

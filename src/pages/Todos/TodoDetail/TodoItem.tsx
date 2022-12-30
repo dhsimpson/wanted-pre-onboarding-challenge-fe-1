@@ -3,12 +3,11 @@ import { Link } from 'react-router-dom';
 
 interface Props {
   todo: Todo;
-  idx: number;
 }
 
-function TodoItem({ todo, idx }: Props) {
+function TodoItem({ todo }: Props) {
   return (
-    <li key={idx} style={{ display: 'flex' }}>
+    <li style={{ display: 'flex' }}>
       <div>
         <p>{todo.title}</p>
         <p>{todo.content}</p>
