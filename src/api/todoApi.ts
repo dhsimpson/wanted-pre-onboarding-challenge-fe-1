@@ -17,6 +17,11 @@ interface TodoResponse {
   };
 }
 
+interface CreateTodoRequest {
+  authToken: string;
+  title: string;
+  content: string;
+}
 export interface UpdateTodoRequest {
   authToken: string;
   id: string;
@@ -34,6 +39,16 @@ export const todosApi = (authToken: string) =>
 
 export const todoApi = (authToken: string, id: string) =>
   axios.get<any, TodoResponse>(`http://localhost:8080/todos/${id}`, { headers: { Authorization: authToken } });
+
+export const todoCreateApi = (req: CreateTodoRequest) =>
+  axios.post(
+    `http://localhost:8080/todos`,
+    {
+      title: req.title,
+      content: req.content,
+    },
+    { headers: { Authorization: req.authToken } },
+  );
 
 export const updateTodoApi = (req: UpdateTodoRequest) =>
   axios.put(

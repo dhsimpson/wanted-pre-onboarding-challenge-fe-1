@@ -1,8 +1,8 @@
-import { useEffect } from 'react';
-import { useQuery } from 'react-query';
+import { useEffect, useState, useRef } from 'react';
+import { useQuery, useMutation } from 'react-query';
 import { Link } from 'react-router-dom';
 import { Outlet, useNavigate } from 'react-router-dom';
-import { Todo, todosApi } from 'api/todoApi';
+import { Todo, todosApi, todoCreateApi } from 'api/todoApi';
 
 function Todos() {
   const navigate = useNavigate();
@@ -21,6 +21,22 @@ function Todos() {
 
   const todoList: Todo[] = data?.data?.data ?? [];
 
+  const [isAdd, setIsAdd] = useState(false);
+
+  const titleRef = useRef<HTMLInputElement>(null);
+  const contentRef = useRef<HTMLInputElement>(null);
+
+  const todoCreateMutation = useMutation(todoCreateApi, {
+    onSuccess: data => {
+      alert('추가 완료!');
+      setIsAdd(false);
+    },
+    onError: e => {
+      console.error(e);
+      alert('추가 실패!');
+    },
+  });
+
   // Todo 목록
   // 등록 버튼
   // 상세 클릭하면 route push
@@ -33,7 +49,6 @@ function Todos() {
           <div>loading</div>
         ) : (
           <ul>
-            {/* todo 클릭 시 상세영역 보기모드 open */}
             {todoList.map((todo, idx) => (
               <li key={idx} style={{ display: 'flex' }}>
                 <div>
@@ -47,7 +62,26 @@ function Todos() {
             ))}
           </ul>
         )}
-        <button>추가버튼</button>
+        {isAdd ? (
+          <>
+            <input type="text" ref={titleRef} />
+            <input type="text" ref={contentRef} />
+            <button
+              onClick={() => {
+                todoCreateMutation.mutate({
+                  authToken: authToken!,
+                  title: titleRef.current!.value,
+                  content: contentRef.current!.value,
+                });
+              }}
+            >
+              추가하기
+            </button>
+            <button onClick={() => setIsAdd(false)}>취소</button>
+          </>
+        ) : (
+          <button onClick={() => setIsAdd(true)}>추가버튼</button>
+        )}
       </div>
       <Outlet></Outlet>
     </div>
