@@ -17,7 +17,7 @@ interface TodoResponse {
   };
 }
 
-interface UpdateTodoRequest {
+export interface UpdateTodoRequest {
   authToken: string;
   id: string;
   title: string;
