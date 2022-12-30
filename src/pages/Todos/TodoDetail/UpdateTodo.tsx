@@ -43,11 +43,22 @@ function UpdateTodo({ todo, setIsUpdate }: Props) {
       <input type="text" defaultValue={todo!.content} ref={contentRef} />
       <button
         onClick={() => {
+          const title = titleRef.current!.value;
+          if (title.length == 0) {
+            alert('제목을 적어 주세요!');
+            return;
+          }
+          const content = contentRef.current!.value;
+
+          if (content.length == 0) {
+            alert('내용을 적어 주세요!');
+            return;
+          }
           todoUpdateMutation.mutate({
             authToken: authToken!,
             id: todo!.id,
-            title: titleRef.current!.value,
-            content: contentRef.current!.value,
+            title,
+            content,
           });
         }}
       >
