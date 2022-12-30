@@ -1,7 +1,7 @@
 import { useRef } from 'react';
-import { updateTodoApi, Todo } from 'api/todoApi';
+import { updateTodoApi, deleteTodoApi, Todo } from 'api/todoApi';
 import { useMutation } from 'react-query';
-
+import { useNavigate } from 'react-router-dom';
 interface Props {
   todo: Todo;
   setIsUpdate: (state: boolean) => void;
@@ -23,6 +23,20 @@ function UpdateTodo({ todo, setIsUpdate }: Props) {
     },
   });
 
+  const navigate = useNavigate();
+
+  const todoDeleteMutation = useMutation(deleteTodoApi, {
+    onSuccess: data => {
+      alert('삭제 완료!');
+      setIsUpdate(false);
+      navigate('/todos');
+    },
+    onError: e => {
+      console.error(e);
+      alert('삭제 실패!');
+    },
+  });
+
   return (
     <div>
       <input type="text" defaultValue={todo!.title} ref={titleRef} />
@@ -40,6 +54,16 @@ function UpdateTodo({ todo, setIsUpdate }: Props) {
         수정완료
       </button>
       <button onClick={() => setIsUpdate(false)}>취소하기</button>
+      <button
+        onClick={() => {
+          todoDeleteMutation.mutate({
+            authToken: authToken!,
+            id: todo!.id,
+          });
+        }}
+      >
+        삭제하기
+      </button>
     </div>
   );
 }

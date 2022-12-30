@@ -24,6 +24,11 @@ export interface UpdateTodoRequest {
   content: string;
 }
 
+interface DeleteTodoRequest {
+  authToken: string;
+  id: string;
+}
+
 export const todosApi = (authToken: string) =>
   axios.get<any, TodosResponse>('http://localhost:8080/todos', { headers: { Authorization: authToken } });
 
@@ -39,3 +44,6 @@ export const updateTodoApi = (req: UpdateTodoRequest) =>
     },
     { headers: { Authorization: req.authToken } },
   );
+
+export const deleteTodoApi = (req: DeleteTodoRequest) =>
+  axios.delete(`http://localhost:8080/todos/${req.id}`, { headers: { Authorization: req.authToken } });
