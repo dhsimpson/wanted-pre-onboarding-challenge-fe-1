@@ -3,6 +3,7 @@ import { useQuery, useMutation } from 'react-query';
 import { Link } from 'react-router-dom';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { Todo, todosApi, todoCreateApi } from 'api/todoApi';
+import AddTodo from './TodoDetail/AddTodo';
 
 function Todos() {
   const navigate = useNavigate();
@@ -20,22 +21,6 @@ function Todos() {
   //TODO : error 시에 alert 및 뒤로가기
 
   const todoList: Todo[] = data?.data?.data ?? [];
-
-  const [isAdd, setIsAdd] = useState(false);
-
-  const titleRef = useRef<HTMLInputElement>(null);
-  const contentRef = useRef<HTMLInputElement>(null);
-
-  const todoCreateMutation = useMutation(todoCreateApi, {
-    onSuccess: data => {
-      alert('추가 완료!');
-      setIsAdd(false);
-    },
-    onError: e => {
-      console.error(e);
-      alert('추가 실패!');
-    },
-  });
 
   // Todo 목록
   // 등록 버튼
@@ -62,38 +47,7 @@ function Todos() {
             ))}
           </ul>
         )}
-        {isAdd ? (
-          <>
-            <input type="text" ref={titleRef} />
-            <input type="text" ref={contentRef} />
-            <button
-              onClick={() => {
-                const title = titleRef.current!.value;
-                if (title.length == 0) {
-                  alert('제목을 적어 주세요!');
-                  return;
-                }
-                const content = contentRef.current!.value;
-
-                if (content.length == 0) {
-                  alert('내용을 적어 주세요!');
-                  return;
-                }
-
-                todoCreateMutation.mutate({
-                  authToken: authToken!,
-                  title,
-                  content,
-                });
-              }}
-            >
-              추가하기
-            </button>
-            <button onClick={() => setIsAdd(false)}>취소</button>
-          </>
-        ) : (
-          <button onClick={() => setIsAdd(true)}>추가버튼</button>
-        )}
+        <AddTodo />
       </div>
       <Outlet></Outlet>
     </div>
