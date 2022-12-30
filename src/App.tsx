@@ -12,6 +12,7 @@ function App() {
   return (
     <div className="App">
       <QueryClientProvider client={queryClient}>
+        {/* TODO : 공통영역에 회원정보표기, 로그아웃 버튼을 위한 nav bar 추가 */}
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Main />}></Route>
