@@ -68,10 +68,22 @@ function Todos() {
             <input type="text" ref={contentRef} />
             <button
               onClick={() => {
+                const title = titleRef.current!.value;
+                if (title.length == 0) {
+                  alert('제목을 적어 주세요!');
+                  return;
+                }
+                const content = contentRef.current!.value;
+
+                if (content.length == 0) {
+                  alert('내용을 적어 주세요!');
+                  return;
+                }
+
                 todoCreateMutation.mutate({
                   authToken: authToken!,
-                  title: titleRef.current!.value,
-                  content: contentRef.current!.value,
+                  title,
+                  content,
                 });
               }}
             >
