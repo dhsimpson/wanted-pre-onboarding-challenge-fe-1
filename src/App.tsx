@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { QueryClientProvider, QueryClient } from 'react-query';
+import Main from 'pages/main/Main';
+import Auth from 'pages/Auth/Auth';
+import Todos from 'pages/Todos/Todos';
+import TodoDetail from 'pages/Todos/TodoDetail/TodoDetail';
+
+const queryClient = new QueryClient();
 
 function App() {
-  const a = 3;
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code>
-          and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <QueryClientProvider client={queryClient}>
+        {/* TODO : 공통영역에 회원정보표기, 로그아웃 버튼을 위한 nav bar 추가 */}
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Main />}></Route>
+            <Route path="/auth" element={<Auth />}></Route>
+            <Route path="/todos" element={<Todos />}>
+              <Route path=":id" element={<TodoDetail />}></Route>
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </QueryClientProvider>
     </div>
   );
 }
