@@ -1,9 +1,9 @@
-import { useEffect, useState, useRef } from 'react';
-import { useQuery, useMutation } from 'react-query';
-import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useQuery } from 'react-query';
 import { Outlet, useNavigate } from 'react-router-dom';
-import { Todo, todosApi, todoCreateApi } from 'api/todoApi';
+import { Todo, todosApi } from 'api/todoApi';
 import AddTodo from './TodoDetail/AddTodo';
+import TodoItem from './TodoDetail/TodoItem';
 
 function Todos() {
   const navigate = useNavigate();
@@ -22,9 +22,6 @@ function Todos() {
 
   const todoList: Todo[] = data?.data?.data ?? [];
 
-  // Todo 목록
-  // 등록 버튼
-  // 상세 클릭하면 route push
   return (
     <div>
       Todo 목록 화면입니다.
@@ -35,15 +32,7 @@ function Todos() {
         ) : (
           <ul>
             {todoList.map((todo, idx) => (
-              <li key={idx} style={{ display: 'flex' }}>
-                <div>
-                  <p>{todo.title}</p>
-                  <p>{todo.content}</p>
-                </div>
-                <Link to={`${todo.id}`}>
-                  <button>자세히보기</button>
-                </Link>
-              </li>
+              <TodoItem todo={todo} idx={idx}></TodoItem>
             ))}
           </ul>
         )}
