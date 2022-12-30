@@ -2,7 +2,7 @@ import { TextField, Button, Box, Grid } from '@mui/material';
 import { useState } from 'react';
 import { useMutation } from 'react-query';
 import { useNavigate } from 'react-router-dom';
-import { authApi } from '../../api/authApi';
+import { authApi } from 'api/authApi';
 
 const validate = (check: (str: string) => boolean, data: string, message: string) => {
   if (!check(data)) {
