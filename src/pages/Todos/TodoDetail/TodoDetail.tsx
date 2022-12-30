@@ -1,14 +1,17 @@
 import { useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import { Todo, todoApi } from '../../../api/todoApi';
+import { useState } from 'react';
 function TodoDetail() {
   const { id } = useParams();
   const authToken = localStorage.getItem('authtoken');
 
   const { data, isLoading, error } = useQuery(['todo', id], () => todoApi(authToken ?? '', id ?? ''));
 
+  const [isModify, setIsModify] = useState(false);
+
   const todo: Todo | undefined = data?.data?.data ?? undefined;
-  console.log(todo);
+
   //TODO : error 시에 alert 및 뒤로가기
   return (
     <div>
@@ -16,16 +19,19 @@ function TodoDetail() {
         <div>로딩중</div>
       ) : (
         <>
-          <div>
-            <p>{todo!.title}</p>
-            <p>{todo!.content}</p>
-          </div>
-          {/* 보기모드일 때 */}
-          <div>선택된 Todo 보기</div>
-          <button>수정모드</button>
-          {/* 수정모드일 때 */}
-          <button>수정내용 제출</button>
-          <button>삭제</button>
+          {!isModify ? (
+            <div>
+              <p>{todo!.title}</p>
+              <p>{todo!.content}</p>
+              <button onClick={() => setIsModify(true)}>수정하기</button>
+            </div>
+          ) : (
+            <div>
+              수정모드
+              <button onClick={() => setIsModify(false)}>수정완료</button>
+              <button onClick={() => setIsModify(false)}>취소하기</button>
+            </div>
+          )}
         </>
       )}
     </div>
