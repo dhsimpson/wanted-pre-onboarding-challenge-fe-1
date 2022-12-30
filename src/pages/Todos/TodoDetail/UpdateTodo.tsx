@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { updateTodoApi, Todo } from '../../../api/todoApi';
+import { updateTodoApi, Todo } from 'api/todoApi';
 import { useMutation } from 'react-query';
 
 interface Props {
@@ -14,7 +14,6 @@ function UpdateTodo({ todo, setIsUpdate }: Props) {
 
   const todoUpdateMutation = useMutation(updateTodoApi, {
     onSuccess: data => {
-      console.log(data);
       alert('업데이트 완료!');
       setIsUpdate(false);
     },

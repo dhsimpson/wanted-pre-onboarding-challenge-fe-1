@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useQuery } from 'react-query';
 import { Link } from 'react-router-dom';
 import { Outlet, useNavigate } from 'react-router-dom';
-import { Todo, todosApi } from '../../api/todoApi';
+import { Todo, todosApi } from 'api/todoApi';
 
 function Todos() {
   const navigate = useNavigate();

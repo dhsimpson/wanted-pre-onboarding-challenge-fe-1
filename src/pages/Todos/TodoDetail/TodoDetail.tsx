@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
-import { Todo, todoApi } from '../../../api/todoApi';
+import { Todo, todoApi } from 'api/todoApi';
 import { useState } from 'react';
 import UpdateTodo from './UpdateTodo';
 import ShowTodo from './ShowTodo';

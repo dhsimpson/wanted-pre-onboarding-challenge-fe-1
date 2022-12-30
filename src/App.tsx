@@ -1,10 +1,10 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { QueryClientProvider, QueryClient } from 'react-query';
-import Main from './pages/main/Main';
-import Auth from './pages/Auth/Auth';
-import Todos from './pages/Todos/Todos';
-import TodoDetail from './pages/Todos/TodoDetail/TodoDetail';
+import Main from 'pages/main/Main';
+import Auth from 'pages/Auth/Auth';
+import Todos from 'pages/Todos/Todos';
+import TodoDetail from 'pages/Todos/TodoDetail/TodoDetail';
 
 const queryClient = new QueryClient();
 
