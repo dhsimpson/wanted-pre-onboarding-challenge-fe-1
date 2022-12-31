@@ -1,15 +1,14 @@
-import { useRef, useEffect } from 'react';
+import { useEffect } from 'react';
 import { updateTodoApi, deleteTodoApi, Todo } from 'api/todoApi';
 import { useMutation } from 'react-query';
 import { useNavigate } from 'react-router-dom';
+import { Box, Button, TextField } from '@mui/material';
 interface Props {
   todo: Todo;
   setIsUpdate: (state: boolean) => void;
 }
 
 function UpdateTodo({ todo, setIsUpdate }: Props) {
-  const titleRef = useRef<HTMLInputElement>(null);
-  const contentRef = useRef<HTMLInputElement>(null);
   let authToken: string | null = localStorage.getItem('authtoken');
 
   const todoUpdateMutation = useMutation(updateTodoApi, {
@@ -37,6 +36,30 @@ function UpdateTodo({ todo, setIsUpdate }: Props) {
     },
   });
 
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+
+    const title = data.get('title')?.toString() ?? '';
+    const content = data.get('content')?.toString() ?? '';
+
+    if (title.length == 0) {
+      alert('제목을 적어 주세요!');
+      return;
+    }
+
+    if (content.length == 0) {
+      alert('내용을 적어 주세요!');
+      return;
+    }
+    todoUpdateMutation.mutate({
+      authToken: authToken!,
+      id: todo!.id,
+      title,
+      content,
+    });
+  };
+
   useEffect(() => {
     return () => {
       authToken = null;
@@ -44,34 +67,18 @@ function UpdateTodo({ todo, setIsUpdate }: Props) {
   });
 
   return (
-    <div>
-      <input type="text" defaultValue={todo!.title} ref={titleRef} />
-      <input type="text" defaultValue={todo!.content} ref={contentRef} />
-      <button
-        onClick={() => {
-          const title = titleRef.current!.value;
-          if (title.length == 0) {
-            alert('제목을 적어 주세요!');
-            return;
-          }
-          const content = contentRef.current!.value;
-
-          if (content.length == 0) {
-            alert('내용을 적어 주세요!');
-            return;
-          }
-          todoUpdateMutation.mutate({
-            authToken: authToken!,
-            id: todo!.id,
-            title,
-            content,
-          });
-        }}
-      >
+    <Box component="form" onSubmit={handleSubmit}>
+      <TextField defaultValue={todo!.title} label="제목" name="title" />
+      <TextField defaultValue={todo!.content} label="내용" name="content" />
+      <Button value="signUp" type="submit" variant="contained" sx={{ mb: 2, mr: 0.5 }}>
         수정완료
-      </button>
-      <button onClick={() => setIsUpdate(false)}>취소하기</button>
-      <button
+      </Button>
+      <Button variant="contained" sx={{ mb: 2 }} onClick={() => setIsUpdate(false)}>
+        취소하기
+      </Button>
+      <Button
+        variant="contained"
+        sx={{ mb: 2 }}
         onClick={() => {
           todoDeleteMutation.mutate({
             authToken: authToken!,
@@ -80,8 +87,8 @@ function UpdateTodo({ todo, setIsUpdate }: Props) {
         }}
       >
         삭제하기
-      </button>
-    </div>
+      </Button>
+    </Box>
   );
 }
 export default UpdateTodo;

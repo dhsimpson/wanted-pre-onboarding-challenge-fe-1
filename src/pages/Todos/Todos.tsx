@@ -4,6 +4,7 @@ import { Outlet, useNavigate, Link } from 'react-router-dom';
 import { Todo, todosApi } from 'api/todoApi';
 import AddTodo from './TodoDetail/AddTodo';
 import TodoItem from './TodoDetail/TodoItem';
+import { Button, List } from '@mui/material';
 
 function Todos() {
   const navigate = useNavigate();
@@ -28,18 +29,21 @@ function Todos() {
 
   return (
     <div>
-      Todo 목록 화면입니다.
-      <Link to="/">Main화면으로 돌아가기</Link>
+      <Link to="/" style={{ textDecoration: 'none' }}>
+        <Button variant="contained" sx={{ mb: 2 }}>
+          Main화면으로 돌아가기
+        </Button>
+      </Link>
       <div>
         목록 영역
         {isLoading ? (
           <div>loading</div>
         ) : (
-          <ul>
+          <List>
             {todoList.map((todo, idx) => (
               <TodoItem todo={todo} key={idx}></TodoItem>
             ))}
-          </ul>
+          </List>
         )}
         <AddTodo />
       </div>

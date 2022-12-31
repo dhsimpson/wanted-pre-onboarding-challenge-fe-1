@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import UpdateTodo from './UpdateTodo';
 import ShowTodo from './ShowTodo';
 import { Link } from 'react-router-dom';
+import { Button, Divider } from '@mui/material';
 function TodoDetail() {
   const { id } = useParams();
   let authToken: string | null = localStorage.getItem('authtoken');
@@ -25,11 +26,16 @@ function TodoDetail() {
   //TODO : error 시에 alert 및 뒤로가기
   return (
     <div>
+      <Divider sx={{ py: 2 }}>TODO 상세</Divider>
       {isLoading && todo == undefined ? (
         <div>로딩중</div>
       ) : (
         <>
-          <Link to="/todos">접기</Link>
+          <Link to="/todos" style={{ textDecoration: 'none' }}>
+            <Button variant="contained" sx={{ mb: 2 }}>
+              접기
+            </Button>
+          </Link>
           {!isUpdate ? (
             <ShowTodo todo={todo!} setIsUpdate={setIsUpdate}></ShowTodo>
           ) : (
