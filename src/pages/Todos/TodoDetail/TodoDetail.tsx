@@ -4,6 +4,7 @@ import { Todo, todoApi } from 'api/todoApi';
 import { useState, useEffect } from 'react';
 import UpdateTodo from './UpdateTodo';
 import ShowTodo from './ShowTodo';
+import { Link } from 'react-router-dom';
 function TodoDetail() {
   const { id } = useParams();
   let authToken: string | null = localStorage.getItem('authtoken');
@@ -28,6 +29,7 @@ function TodoDetail() {
         <div>로딩중</div>
       ) : (
         <>
+          <Link to="/todos">접기</Link>
           {!isUpdate ? (
             <ShowTodo todo={todo!} setIsUpdate={setIsUpdate}></ShowTodo>
           ) : (
