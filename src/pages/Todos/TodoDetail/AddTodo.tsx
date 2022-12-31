@@ -1,9 +1,9 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { useMutation } from 'react-query';
 import { todoCreateApi } from 'api/todoApi';
 
 function AddTodo() {
-  const authToken = localStorage.getItem('authtoken');
+  let authToken: string | null = localStorage.getItem('authtoken');
   const titleRef = useRef<HTMLInputElement>(null);
   const contentRef = useRef<HTMLInputElement>(null);
 
@@ -19,6 +19,13 @@ function AddTodo() {
       alert('추가 실패!');
     },
   });
+
+  useEffect(() => {
+    return () => {
+      authToken = null;
+    };
+  });
+
   return (
     <>
       {isAdd ? (
