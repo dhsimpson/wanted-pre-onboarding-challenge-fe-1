@@ -7,7 +7,7 @@ function Main() {
 
   useEffect(() => {
     if (!authToken) {
-      alert('로그인을 해주세요!'); // 이 alert가 두번 뜬다.... 왜 그럴까?
+      alert('로그인을 해주세요!');
       navigate('/auth');
       return;
     }
