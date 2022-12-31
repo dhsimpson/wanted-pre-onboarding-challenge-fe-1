@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import { useQuery } from 'react-query';
-import { Outlet, useNavigate, Link } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import { Todo, todosApi } from 'api/todoApi';
 import AddTodo from './TodoDetail/AddTodo';
 import TodoItem from './TodoDetail/TodoItem';
-import { Button, List } from '@mui/material';
+import { List } from '@mui/material';
 
 function Todos() {
   const navigate = useNavigate();
@@ -29,11 +29,6 @@ function Todos() {
 
   return (
     <div>
-      <Link to="/" style={{ textDecoration: 'none' }}>
-        <Button variant="contained" sx={{ mb: 2 }}>
-          Main화면으로 돌아가기
-        </Button>
-      </Link>
       <div>
         목록 영역
         {isLoading ? (

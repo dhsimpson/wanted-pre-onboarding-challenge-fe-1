@@ -5,6 +5,7 @@ import Main from 'pages/main/Main';
 import Auth from 'pages/Auth/Auth';
 import Todos from 'pages/Todos/Todos';
 import TodoDetail from 'pages/Todos/TodoDetail/TodoDetail';
+import Navigation from 'nav/Navigation';
 
 const queryClient = new QueryClient();
 
@@ -14,6 +15,7 @@ function App() {
       <QueryClientProvider client={queryClient}>
         {/* TODO : 공통영역에 회원정보표기, 로그아웃 버튼을 위한 nav bar 추가 */}
         <BrowserRouter>
+          <Navigation />
           <Routes>
             <Route path="/" element={<Main />}></Route>
             <Route path="/auth" element={<Auth />}></Route>
