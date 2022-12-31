@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 function Main() {
@@ -16,6 +17,11 @@ function Main() {
     };
   });
 
-  return <div>Main 화면입니다.</div>;
+  return (
+    <div>
+      Main 화면입니다.
+      <Link to="/todos">Todo 보러가기</Link>
+    </div>
+  );
 }
 export default Main;
