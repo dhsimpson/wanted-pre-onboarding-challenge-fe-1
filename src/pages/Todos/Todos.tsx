@@ -7,7 +7,12 @@ import TodoItem from './TodoDetail/TodoItem';
 
 function Todos() {
   const navigate = useNavigate();
-  const authToken = localStorage.getItem('authtoken');
+  let authToken: string | null = localStorage.getItem('authtoken');
+
+  const { data, isLoading, error } = useQuery(['todos'], () => todosApi(authToken ?? ''));
+  //TODO : error 시에 alert 및 뒤로가기
+
+  let todoList: Todo[] = data?.data?.data ?? [];
 
   useEffect(() => {
     if (!authToken) {
@@ -15,12 +20,11 @@ function Todos() {
       navigate('/auth');
       return;
     }
+    return () => {
+      authToken = null;
+      todoList = [];
+    };
   });
-
-  const { data, isLoading, error } = useQuery(['todos'], () => todosApi(authToken ?? ''));
-  //TODO : error 시에 alert 및 뒤로가기
-
-  const todoList: Todo[] = data?.data?.data ?? [];
 
   return (
     <div>
