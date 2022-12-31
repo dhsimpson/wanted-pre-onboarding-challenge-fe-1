@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { updateTodoApi, deleteTodoApi, Todo } from 'api/todoApi';
 import { useMutation } from 'react-query';
 import { useNavigate } from 'react-router-dom';
@@ -10,7 +10,7 @@ interface Props {
 function UpdateTodo({ todo, setIsUpdate }: Props) {
   const titleRef = useRef<HTMLInputElement>(null);
   const contentRef = useRef<HTMLInputElement>(null);
-  const authToken = localStorage.getItem('authtoken');
+  let authToken: string | null = localStorage.getItem('authtoken');
 
   const todoUpdateMutation = useMutation(updateTodoApi, {
     onSuccess: data => {
@@ -35,6 +35,12 @@ function UpdateTodo({ todo, setIsUpdate }: Props) {
       console.error(e);
       alert('삭제 실패!');
     },
+  });
+
+  useEffect(() => {
+    return () => {
+      authToken = null;
+    };
   });
 
   return (
