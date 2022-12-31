@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 function Main() {
   const navigate = useNavigate();
-  const authToken = localStorage.getItem('authtoken');
+  let authToken = localStorage.getItem('authtoken');
 
   useEffect(() => {
     if (!authToken) {
@@ -11,6 +11,9 @@ function Main() {
       navigate('/auth');
       return;
     }
+    return () => {
+      authToken = null;
+    };
   });
 
   return <div>Main 화면입니다.</div>;
