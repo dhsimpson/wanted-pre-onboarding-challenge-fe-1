@@ -13,7 +13,7 @@ function Navigation() {
       <Toolbar>
         <Box sx={{}}>
           {navItems.map(({ href, data }) => (
-            <Link to={href} style={{ textDecoration: 'none' }}>
+            <Link to={href} style={{ textDecoration: 'none' }} key={data}>
               <Button key={data} sx={{ color: '#fff' }}>
                 {data}
               </Button>
