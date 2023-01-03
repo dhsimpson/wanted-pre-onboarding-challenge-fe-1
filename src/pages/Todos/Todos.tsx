@@ -34,11 +34,13 @@ function Todos() {
         {isLoading ? (
           <div>loading</div>
         ) : (
-          <List>
+          <>
             {todoList.map((todo, idx) => (
-              <TodoItem todo={todo} key={idx}></TodoItem>
+              <List key={idx}>
+                <TodoItem todo={todo}></TodoItem>
+              </List>
             ))}
-          </List>
+          </>
         )}
         <AddTodo />
       </div>
