@@ -1,11 +1,10 @@
-import { useRef, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useMutation } from 'react-query';
 import { todoCreateApi } from 'api/todoApi';
+import { Box, Button, TextField, Divider } from '@mui/material';
 
 function AddTodo() {
-  const authToken = localStorage.getItem('authtoken');
-  const titleRef = useRef<HTMLInputElement>(null);
-  const contentRef = useRef<HTMLInputElement>(null);
+  let authToken: string | null = localStorage.getItem('authtoken');
 
   const [isAdd, setIsAdd] = useState(false);
 
@@ -19,39 +18,52 @@ function AddTodo() {
       alert('추가 실패!');
     },
   });
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const title = data.get('title')?.toString() ?? '';
+    const content = data.get('content')?.toString() ?? '';
+    if (title.length == 0) {
+      alert('제목을 적어 주세요!');
+      return;
+    }
+
+    if (content.length == 0) {
+      alert('내용을 적어 주세요!');
+      return;
+    }
+    todoCreateMutation.mutate({
+      authToken: authToken!,
+      title,
+      content,
+    });
+  };
+
+  useEffect(() => {
+    return () => {
+      authToken = null;
+    };
+  });
+
   return (
     <>
+      <Divider sx={{ py: 2 }}>새로운 TODO 추가</Divider>
       {isAdd ? (
-        <>
-          <input type="text" ref={titleRef} />
-          <input type="text" ref={contentRef} />
-          <button
-            onClick={() => {
-              const title = titleRef.current!.value;
-              if (title.length == 0) {
-                alert('제목을 적어 주세요!');
-                return;
-              }
-              const content = contentRef.current!.value;
-
-              if (content.length == 0) {
-                alert('내용을 적어 주세요!');
-                return;
-              }
-
-              todoCreateMutation.mutate({
-                authToken: authToken!,
-                title,
-                content,
-              });
-            }}
-          >
+        <Box component="form" onSubmit={handleSubmit}>
+          <TextField label="제목" name="title" />
+          <TextField label="내용" name="content" />
+          <Button type="submit" variant="contained" sx={{ mb: 2, mr: 0.5 }}>
             추가하기
-          </button>
-          <button onClick={() => setIsAdd(false)}>취소</button>
-        </>
+          </Button>
+          <Button variant="contained" sx={{ mb: 2 }} onClick={() => setIsAdd(false)}>
+            취소
+          </Button>
+        </Box>
       ) : (
-        <button onClick={() => setIsAdd(true)}>추가버튼</button>
+        <Button onClick={() => setIsAdd(true)} variant="contained" sx={{ mb: 2 }}>
+          추가버튼
+        </Button>
       )}
     </>
   );

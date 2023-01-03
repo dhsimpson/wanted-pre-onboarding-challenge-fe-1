@@ -4,10 +4,16 @@ import { Outlet, useNavigate } from 'react-router-dom';
 import { Todo, todosApi } from 'api/todoApi';
 import AddTodo from './TodoDetail/AddTodo';
 import TodoItem from './TodoDetail/TodoItem';
+import { List } from '@mui/material';
 
 function Todos() {
   const navigate = useNavigate();
-  const authToken = localStorage.getItem('authtoken');
+  let authToken: string | null = localStorage.getItem('authtoken');
+
+  const { data, isLoading, error } = useQuery(['todos'], () => todosApi(authToken ?? ''));
+  //TODO : error 시에 alert 및 뒤로가기
+
+  let todoList: Todo[] = data?.data?.data ?? [];
 
   useEffect(() => {
     if (!authToken) {
@@ -15,26 +21,24 @@ function Todos() {
       navigate('/auth');
       return;
     }
-  });
-
-  const { data, isLoading, error } = useQuery(['todos'], () => todosApi(authToken ?? ''));
-  //TODO : error 시에 alert 및 뒤로가기
-
-  const todoList: Todo[] = data?.data?.data ?? [];
+    return () => {
+      authToken = null;
+      todoList = [];
+    };
+  }, [todoList]);
 
   return (
     <div>
-      Todo 목록 화면입니다.
       <div>
         목록 영역
         {isLoading ? (
           <div>loading</div>
         ) : (
-          <ul>
+          <List>
             {todoList.map((todo, idx) => (
               <TodoItem todo={todo} key={idx}></TodoItem>
             ))}
-          </ul>
+          </List>
         )}
         <AddTodo />
       </div>
