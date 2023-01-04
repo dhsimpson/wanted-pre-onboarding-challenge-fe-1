@@ -45,6 +45,7 @@ yarn start
 ```
 
 <br/>
+
 # 프로젝트 셋팅
 
 1. yarn 버전을 berry 로 변경 및 프로젝트 초기화
