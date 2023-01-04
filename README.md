@@ -1,9 +1,50 @@
-# wanted-pre-onboarding-challenge-fe-1
+# 화면 구성
 
-wanted preonboarding challenge
+### [메인화면]
+
+- 경로 : /
+- 기능이 없는 메인 화면
+- <img src="./public/readme/main.png" width="200px"/>
+
+### [로그인/회원가입 화면]
+
+- 경로 : /auth
+- 로그인, 회원가입 기능
+- <img src="./public/readme/login.png" width="200px"/>
+
+### [Todo리스트 화면]
+
+- 경로 : /todos
+- todo 리스트를 볼 수 있고, 자세히 보기 버튼, todo 추가 버튼이 있는 화면
+- <img src="./public/readme/todo.png" width="200px"/>
+
+### [Todo 상세 화면]
+
+- 경로 : /todos/[id]
+- todo 리스트 영역 하위에 노출되며, 수정하기, 삭제하기 기능이 있는 화면
+- 접기 버튼 클릭 시 'Todo리스트 화면'으로 route
+- <img src="./public/readme/todo_detail.png" width="200px"/>
+
+### [로그인 Alert]
+
+- 로그인/회원가입 화면 이외 화면 진입 시 Alert, 확인버튼 클릭 시 로그인/회원가입 화면으로 route
+- <img src="./public/readme/login_alert.png" width="200px"/>
+
+<br/>
+<br/>
 
 # [API ReadME](https://github.com/starkoora/wanted-pre-onboarding-challenge-fe-1-api)
 
+<br/>
+
+# 프로젝트 실행
+
+```
+yarn (or yarn install)
+yarn start
+```
+
+<br/>
 # 프로젝트 셋팅
 
 1. yarn 버전을 berry 로 변경 및 프로젝트 초기화
@@ -35,7 +76,6 @@ c.f.) [react nested route : /todos/:id](https://www.robinwieruch.de/react-router
 - React
 - Material UI
 - axios
-- recoil
 - react-query
 
 [For Dev]
