@@ -56,6 +56,7 @@ function Auth() {
   return (
     <Box sx={{ maxWidth: 440 }}>
       <Box component="form" sx={{ mt: 1 }} onSubmit={handleSubmit}>
+        {/* TODO : 로그인, 회원가입 버튼 분리 (컴포넌트화) */}
         <TextField
           margin="normal"
           required
@@ -98,7 +99,7 @@ function Auth() {
               sx={{ mb: 2 }}
               onClick={() => setSubmitType('signUp')}
             >
-              Sign In
+              Sign Up
             </Button>
           </Grid>
         </Grid>
