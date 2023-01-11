@@ -1,18 +1,20 @@
 import { useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import { Todo, todoApi } from 'api/todoApi';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import UpdateTodo from './UpdateTodo';
 import ShowTodo from './ShowTodo';
 import { Link } from 'react-router-dom';
 import { Button, Divider } from '@mui/material';
+import { updateTodoState } from 'atom/todoDetail';
+import { useRecoilState } from 'recoil';
+
 function TodoDetail() {
   const { id } = useParams();
   let authToken: string | null = localStorage.getItem('authtoken');
 
   const { data, isLoading, error } = useQuery(['todo', id], () => todoApi(authToken ?? '', id ?? ''));
-
-  const [isUpdate, setIsUpdate] = useState(false);
+  const [isUpdateTodo, setIsUpdateTodo] = useRecoilState(updateTodoState);
 
   let todo: Todo | undefined = data?.data?.data ?? undefined;
 
@@ -36,11 +38,7 @@ function TodoDetail() {
               접기
             </Button>
           </Link>
-          {!isUpdate ? (
-            <ShowTodo todo={todo!} setIsUpdate={setIsUpdate}></ShowTodo>
-          ) : (
-            <UpdateTodo todo={todo!} setIsUpdate={setIsUpdate}></UpdateTodo>
-          )}
+          {!isUpdateTodo ? <ShowTodo todo={todo!}></ShowTodo> : <UpdateTodo todo={todo!}></UpdateTodo>}
         </>
       )}
     </div>
