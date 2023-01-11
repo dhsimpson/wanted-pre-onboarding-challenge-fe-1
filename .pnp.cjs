@@ -53,6 +53,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-query", "virtual:e47e54ad26381858dfb213ed42014296af44753a1b18ad1eac094a50191cfe227bd625900ff529fca74192fd996aed5cb5a2507f55cc7a030da5487784b765b3#npm:3.39.2"],\
             ["react-router-dom", "virtual:e47e54ad26381858dfb213ed42014296af44753a1b18ad1eac094a50191cfe227bd625900ff529fca74192fd996aed5cb5a2507f55cc7a030da5487784b765b3#npm:6.6.1"],\
             ["react-scripts", "virtual:e47e54ad26381858dfb213ed42014296af44753a1b18ad1eac094a50191cfe227bd625900ff529fca74192fd996aed5cb5a2507f55cc7a030da5487784b765b3#npm:5.0.1"],\
+            ["recoil", "virtual:e47e54ad26381858dfb213ed42014296af44753a1b18ad1eac094a50191cfe227bd625900ff529fca74192fd996aed5cb5a2507f55cc7a030da5487784b765b3#npm:0.7.6"],\
             ["typescript", "patch:typescript@npm%3A4.9.3#~builtin<compat/typescript>::version=4.9.3&hash=d73830"],\
             ["web-vitals", "npm:2.1.4"]\
           ],\
@@ -9960,6 +9961,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["hamt_plus", [\
+        ["npm:1.0.2", {\
+          "packageLocation": "./.yarn/cache/hamt_plus-npm-1.0.2-67a52ee1df-af26ea32db.zip/node_modules/hamt_plus/",\
+          "packageDependencies": [\
+            ["hamt_plus", "npm:1.0.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["handle-thing", [\
         ["npm:2.0.1", {\
           "packageLocation": "./.yarn/cache/handle-thing-npm-2.0.1-084baca59e-68071f3130.zip/node_modules/handle-thing/",\
@@ -15559,6 +15569,37 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["recoil", [\
+        ["npm:0.7.6", {\
+          "packageLocation": "./.yarn/cache/recoil-npm-0.7.6-6f8de04e3d-2b31dd29a7.zip/node_modules/recoil/",\
+          "packageDependencies": [\
+            ["recoil", "npm:0.7.6"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:e47e54ad26381858dfb213ed42014296af44753a1b18ad1eac094a50191cfe227bd625900ff529fca74192fd996aed5cb5a2507f55cc7a030da5487784b765b3#npm:0.7.6", {\
+          "packageLocation": "./.yarn/__virtual__/recoil-virtual-ff36761fb7/0/cache/recoil-npm-0.7.6-6f8de04e3d-2b31dd29a7.zip/node_modules/recoil/",\
+          "packageDependencies": [\
+            ["recoil", "virtual:e47e54ad26381858dfb213ed42014296af44753a1b18ad1eac094a50191cfe227bd625900ff529fca74192fd996aed5cb5a2507f55cc7a030da5487784b765b3#npm:0.7.6"],\
+            ["@types/react", "npm:18.0.26"],\
+            ["@types/react-dom", "npm:18.0.10"],\
+            ["@types/react-native", null],\
+            ["hamt_plus", "npm:1.0.2"],\
+            ["react", "npm:18.2.0"],\
+            ["react-dom", "virtual:e47e54ad26381858dfb213ed42014296af44753a1b18ad1eac094a50191cfe227bd625900ff529fca74192fd996aed5cb5a2507f55cc7a030da5487784b765b3#npm:18.2.0"],\
+            ["react-native", null]\
+          ],\
+          "packagePeers": [\
+            "@types/react-dom",\
+            "@types/react-native",\
+            "@types/react",\
+            "react-dom",\
+            "react-native",\
+            "react"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["recursive-readdir", [\
         ["npm:2.2.3", {\
           "packageLocation": "./.yarn/cache/recursive-readdir-npm-2.2.3-3f177ebd90-88ec96e276.zip/node_modules/recursive-readdir/",\
@@ -17632,6 +17673,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-query", "virtual:e47e54ad26381858dfb213ed42014296af44753a1b18ad1eac094a50191cfe227bd625900ff529fca74192fd996aed5cb5a2507f55cc7a030da5487784b765b3#npm:3.39.2"],\
             ["react-router-dom", "virtual:e47e54ad26381858dfb213ed42014296af44753a1b18ad1eac094a50191cfe227bd625900ff529fca74192fd996aed5cb5a2507f55cc7a030da5487784b765b3#npm:6.6.1"],\
             ["react-scripts", "virtual:e47e54ad26381858dfb213ed42014296af44753a1b18ad1eac094a50191cfe227bd625900ff529fca74192fd996aed5cb5a2507f55cc7a030da5487784b765b3#npm:5.0.1"],\
+            ["recoil", "virtual:e47e54ad26381858dfb213ed42014296af44753a1b18ad1eac094a50191cfe227bd625900ff529fca74192fd996aed5cb5a2507f55cc7a030da5487784b765b3#npm:0.7.6"],\
             ["typescript", "patch:typescript@npm%3A4.9.3#~builtin<compat/typescript>::version=4.9.3&hash=d73830"],\
             ["web-vitals", "npm:2.1.4"]\
           ],\
