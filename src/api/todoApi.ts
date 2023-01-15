@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import axiosClient from 'utils/axiosClient';
 export interface Todo {
   title: string;
   content: string;
@@ -34,8 +34,7 @@ interface DeleteTodoRequest {
   id: string;
 }
 
-export const todosApi = (authToken: string) =>
-  axios.get<any, TodosResponse>('http://localhost:8080/todos', { headers: { Authorization: authToken } });
+export const todosApi = (authToken: string) => axiosClient.get<any, TodosResponse>('/todos');
 
 export const todoApi = (authToken: string, id: string) =>
   axios.get<any, TodoResponse>(`http://localhost:8080/todos/${id}`, { headers: { Authorization: authToken } });

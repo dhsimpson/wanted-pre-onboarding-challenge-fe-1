@@ -1,7 +1,6 @@
 import axios, { AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
 // import { config } from 'process';
-import { useNavigate } from 'react-router-dom';
-const navigate = useNavigate();
+import customHistory from 'utils/history';
 
 const baseURL: string = process.env.REACT_APP_TODO_SERVER_BASE_URL as string;
 
@@ -34,7 +33,8 @@ axiosClient.interceptors.response.use(
 
     if (status === Unauthorized) {
       alert('로그인을 해주세요!');
-      navigate('/auth');
+
+      customHistory.replace('/auth');
     }
 
     return Promise.reject(error);
