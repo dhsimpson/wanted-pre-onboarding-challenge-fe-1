@@ -13,7 +13,7 @@ function TodoDetail() {
   const { id } = useParams();
   let authToken: string | null = localStorage.getItem('authtoken');
 
-  const { data, isLoading, error } = useQuery(['todo', id], () => todoApi(authToken ?? '', id ?? ''));
+  const { data, isLoading, error } = useQuery(['todo', id], () => todoApi(id ?? ''));
   const [isUpdateTodo, setIsUpdateTodo] = useRecoilState(updateTodoState);
 
   let todo: Todo | undefined = data?.data?.data ?? undefined;

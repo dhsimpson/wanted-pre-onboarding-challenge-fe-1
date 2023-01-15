@@ -56,7 +56,6 @@ function UpdateTodoButton({ todo }: Props) {
       return;
     }
     todoUpdateMutation.mutate({
-      authToken: authToken!,
       id: todo!.id,
       title,
       content,

@@ -34,7 +34,6 @@ function AddTodo() {
       return;
     }
     todoCreateMutation.mutate({
-      authToken: authToken!,
       title,
       content,
     });

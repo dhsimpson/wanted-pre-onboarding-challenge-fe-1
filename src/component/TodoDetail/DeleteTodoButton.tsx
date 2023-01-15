@@ -43,7 +43,6 @@ function DeleteTodoButton({ todo }: Props) {
 
   const commitDelete = () => {
     todoDeleteMutation.mutate({
-      authToken: authToken!,
       id: todo!.id,
     });
   };
