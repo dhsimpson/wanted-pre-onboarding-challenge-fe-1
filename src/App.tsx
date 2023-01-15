@@ -5,7 +5,7 @@ import Main from 'pages/main/Main';
 import Auth from 'pages/Auth/Auth';
 import Todos from 'pages/Todos/Todos';
 import TodoDetail from 'pages/Todos/TodoDetail/TodoDetail';
-import Navigation from 'nav/Navigation';
+import Navigation from 'component/nav/Navigation';
 
 const queryClient = new QueryClient();
 
