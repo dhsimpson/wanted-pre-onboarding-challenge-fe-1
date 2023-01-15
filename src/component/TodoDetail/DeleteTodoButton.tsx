@@ -1,4 +1,4 @@
-import YesNoModal from 'modal/YesNoModal';
+import YesNoModal from 'component/modal/YesNoModal';
 import { useNavigate } from 'react-router-dom';
 import { deleteTodoApi } from 'api/todoApi';
 import { useMutation } from 'react-query';

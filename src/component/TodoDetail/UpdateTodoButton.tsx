@@ -1,4 +1,4 @@
-import YesNoModal from 'modal/YesNoModal';
+import YesNoModal from 'component/modal/YesNoModal';
 import { useMutation } from 'react-query';
 import { useEffect, useState } from 'react';
 import { Button } from '@mui/material';
