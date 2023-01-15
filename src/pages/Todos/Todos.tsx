@@ -2,8 +2,8 @@ import { useEffect } from 'react';
 import { useQuery } from 'react-query';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { Todo, todosApi } from 'api/todoApi';
-import AddTodo from './TodoDetail/AddTodo';
-import TodoItem from './TodoDetail/TodoItem';
+import AddTodo from 'component/TodoDetail/AddTodo';
+import TodoItem from 'component/TodoDetail/TodoItem';
 import { List } from '@mui/material';
 
 function Todos() {
@@ -17,7 +17,7 @@ function Todos() {
 
   useEffect(() => {
     if (!authToken) {
-      alert('로그인을 해주세요!'); // 이 alert가 두번 뜬다.... 왜 그럴까?
+      alert('로그인을 해주세요!');
       navigate('/auth');
       return;
     }

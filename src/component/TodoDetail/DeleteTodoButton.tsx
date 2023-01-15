@@ -5,14 +5,16 @@ import { useMutation } from 'react-query';
 import { Todo } from 'api/todoApi';
 import { useEffect, useState } from 'react';
 import Button from '@mui/material/Button';
+import { useRecoilState } from 'recoil';
+import { updateTodoState } from 'atom/todoDetail';
 
 interface Props {
   todo: Todo;
-  setIsUpdate: (state: boolean) => void;
 }
 
-function DeleteTodoButton({ todo, setIsUpdate }: Props) {
+function DeleteTodoButton({ todo }: Props) {
   let authToken: string | null = localStorage.getItem('authtoken');
+  const [isUpdateTodo, setIsUpdateTodo] = useRecoilState(updateTodoState);
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -24,7 +26,7 @@ function DeleteTodoButton({ todo, setIsUpdate }: Props) {
   const todoDeleteMutation = useMutation(deleteTodoApi, {
     onSuccess: data => {
       alert('삭제 완료!');
-      setIsUpdate(false);
+      setIsUpdateTodo(false);
       navigate('/todos');
     },
     onError: e => {

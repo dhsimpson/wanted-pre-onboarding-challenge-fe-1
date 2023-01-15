@@ -1,18 +1,19 @@
 import YesNoModal from 'modal/YesNoModal';
-import { useNavigate } from 'react-router-dom';
-import { deleteTodoApi } from 'api/todoApi';
 import { useMutation } from 'react-query';
 import { useEffect, useState } from 'react';
 import { Button } from '@mui/material';
 import { updateTodoApi, Todo } from 'api/todoApi';
+import { useRecoilState } from 'recoil';
+import { updateTodoState } from 'atom/todoDetail';
 
 interface Props {
   todo: Todo;
-  setIsUpdate: (state: boolean) => void;
 }
 
-function UpdateTodoButton({ todo, setIsUpdate }: Props) {
+function UpdateTodoButton({ todo }: Props) {
   let authToken: string | null = localStorage.getItem('authtoken');
+  const [isUpdateTodo, setIsUpdateTodo] = useRecoilState(updateTodoState);
+
   const [open, setOpen] = useState(false);
   const [formRef, setFormRef] = useState({} as HTMLFormElement);
 
@@ -31,7 +32,7 @@ function UpdateTodoButton({ todo, setIsUpdate }: Props) {
   const todoUpdateMutation = useMutation(updateTodoApi, {
     onSuccess: data => {
       alert('업데이트 완료!');
-      setIsUpdate(false);
+      setIsUpdateTodo(false);
     },
     onError: e => {
       console.error(e);
@@ -68,14 +69,7 @@ function UpdateTodoButton({ todo, setIsUpdate }: Props) {
 
   return (
     <>
-      <Button
-        onClick={handleClickOpen}
-        form="updateTodo"
-        value="signUp"
-        // type="submit"
-        variant="contained"
-        sx={{ mb: 2, mr: 0.5 }}
-      >
+      <Button onClick={handleClickOpen} form="updateTodo" value="signUp" variant="contained" sx={{ mb: 2, mr: 0.5 }}>
         수정완료
       </Button>
       <YesNoModal
