@@ -13,7 +13,6 @@ interface Props {
 }
 
 function DeleteTodoButton({ todo }: Props) {
-  let authToken: string | null = localStorage.getItem('authtoken');
   const setIsUpdateTodo = useSetRecoilState(updateTodoState);
 
   const [openModal, setOpenModal] = useState(false);
@@ -34,12 +33,6 @@ function DeleteTodoButton({ todo }: Props) {
       console.error(e);
       alert('삭제 실패!');
     },
-  });
-
-  useEffect(() => {
-    return () => {
-      authToken = null;
-    };
   });
 
   const commitDelete = () => {

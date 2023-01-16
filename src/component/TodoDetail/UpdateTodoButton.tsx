@@ -11,7 +11,6 @@ interface Props {
 }
 
 function UpdateTodoButton({ todo }: Props) {
-  let authToken: string | null = localStorage.getItem('authtoken');
   const setIsUpdateTodo = useSetRecoilState(updateTodoState);
 
   const [openModal, setOpenModal] = useState(false);
@@ -22,12 +21,6 @@ function UpdateTodoButton({ todo }: Props) {
     setFormRef(t.form);
     setOpenModal(true);
   };
-
-  useEffect(() => {
-    return () => {
-      authToken = null;
-    };
-  });
 
   const todoUpdateMutation = useMutation(updateTodoApi, {
     onSuccess: data => {

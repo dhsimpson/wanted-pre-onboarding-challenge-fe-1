@@ -10,14 +10,7 @@ interface Props {
 }
 
 function UpdateTodo({ todo }: Props) {
-  let authToken: string | null = localStorage.getItem('authtoken');
   const setIsUpdateTodo = useSetRecoilState(updateTodoState);
-
-  useEffect(() => {
-    return () => {
-      authToken = null;
-    };
-  });
 
   return (
     <Box component="form" id="updateTodo">

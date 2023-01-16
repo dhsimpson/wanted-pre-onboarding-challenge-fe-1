@@ -11,7 +11,6 @@ import { useRecoilValue } from 'recoil';
 
 function TodoDetail() {
   const { id } = useParams();
-  let authToken: string | null = localStorage.getItem('authtoken');
 
   const { data, isLoading, error } = useQuery(['todo', id], () => todoApi(id ?? ''));
 
@@ -21,7 +20,6 @@ function TodoDetail() {
 
   useEffect(() => {
     return () => {
-      authToken = null;
       todo = undefined;
     };
   });
