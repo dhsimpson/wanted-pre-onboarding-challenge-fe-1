@@ -14,13 +14,13 @@ function UpdateTodoButton({ todo }: Props) {
   let authToken: string | null = localStorage.getItem('authtoken');
   const setIsUpdateTodo = useSetRecoilState(updateTodoState);
 
-  const [open, setOpen] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
   const [formRef, setFormRef] = useState({} as HTMLFormElement);
 
   const handleClickOpen = (e: React.MouseEvent<HTMLButtonElement>) => {
     const t = e.target as HTMLFormElement;
     setFormRef(t.form);
-    setOpen(true);
+    setOpenModal(true);
   };
 
   useEffect(() => {
@@ -72,8 +72,8 @@ function UpdateTodoButton({ todo }: Props) {
         수정완료
       </Button>
       <YesNoModal
-        open={open}
-        setOpen={setOpen}
+        openModal={openModal}
+        setOpenModal={setOpenModal}
         message="정말로 수정하시겠습니까?"
         clickYesCallback={commitUpdate}
         clickNoCallback={commitNothing}

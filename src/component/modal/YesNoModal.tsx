@@ -5,13 +5,13 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 
 interface Props {
-  open: boolean;
-  setOpen: (newState: boolean) => void;
+  openModal: boolean;
+  setOpenModal: (newState: boolean) => void;
   message: string;
   clickYesCallback: () => void;
   clickNoCallback: () => void;
 }
-function YesNoModal({ open, setOpen, message, clickYesCallback, clickNoCallback }: Props) {
+function YesNoModal({ openModal, setOpenModal, message, clickYesCallback, clickNoCallback }: Props) {
   const handleYes = () => {
     clickYesCallback();
     handleClose();
@@ -22,12 +22,12 @@ function YesNoModal({ open, setOpen, message, clickYesCallback, clickNoCallback 
   };
 
   const handleClose = () => {
-    setOpen(false);
+    setOpenModal(false);
   };
 
   return (
     <Dialog
-      open={open}
+      open={openModal}
       onClose={handleClose}
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"

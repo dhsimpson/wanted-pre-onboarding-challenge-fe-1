@@ -16,10 +16,10 @@ function DeleteTodoButton({ todo }: Props) {
   let authToken: string | null = localStorage.getItem('authtoken');
   const setIsUpdateTodo = useSetRecoilState(updateTodoState);
 
-  const [open, setOpen] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
 
   const handleClickOpen = () => {
-    setOpen(true);
+    setOpenModal(true);
   };
 
   const navigate = useNavigate();
@@ -58,8 +58,8 @@ function DeleteTodoButton({ todo }: Props) {
         삭제하기
       </Button>
       <YesNoModal
-        open={open}
-        setOpen={setOpen}
+        openModal={openModal}
+        setOpenModal={setOpenModal}
         message="정말로 삭제하시겠습니까?"
         clickYesCallback={commitDelete}
         clickNoCallback={commitNothing}
