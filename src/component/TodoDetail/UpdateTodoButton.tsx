@@ -7,6 +7,7 @@ import { useSetRecoilState } from 'recoil';
 import { updateTodoState } from 'atom/todoDetail';
 import { validateNewTodo } from 'utils/validate';
 import { getFormInputData } from 'utils/formData';
+import useTodo from 'hooks/useTodo';
 
 interface Props {
   todo: Todo;
@@ -18,46 +19,50 @@ function UpdateTodoButton({ todo }: Props) {
   const [openModal, setOpenModal] = useState(false);
   const [formRef, setFormRef] = useState({} as HTMLFormElement);
 
-  const handleClickOpen = (e: React.MouseEvent<HTMLButtonElement>) => {
-    const t = e.target as HTMLFormElement;
-    setFormRef(t.form);
-    setOpenModal(true);
-  };
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
 
-  const todoUpdateMutation = useMutation(updateTodoApi, {
-    onSuccess: data => {
+  useEffect(() => {
+    if (formRef instanceof HTMLFormElement) {
+      const data = new FormData(formRef as HTMLFormElement);
+
+      setTitle(getFormInputData(data, 'title'));
+      setContent(getFormInputData(data, 'content'));
+    }
+  }, [formRef, title, content]);
+
+  const [handleClickOpen, commitUpdate, commitNothing] = useTodo(
+    (e: React.MouseEvent<HTMLButtonElement>) => {
+      const t = e.target as HTMLFormElement;
+      setFormRef(t.form);
+      setOpenModal(true);
+    },
+    updateTodoApi,
+    () => {
       alert('업데이트 완료!');
       setIsUpdateTodo(false);
     },
-    onError: e => {
+    (e: unknown) => {
       console.error(e);
       alert('업데이트 실패!');
     },
-  });
-
-  const commitUpdate = () => {
-    const data = new FormData(formRef as HTMLFormElement);
-
-    const title = getFormInputData(data, 'title');
-    const content = getFormInputData(data, 'content');
-
-    if (!validateNewTodo(title, '제목을 적어 주세요!')) {
-      return;
-    }
-    if (!validateNewTodo(content, '내용을 적어 주세요!')) {
-      return;
-    }
-
-    todoUpdateMutation.mutate({
+    () => {
+      if (!validateNewTodo(title, '제목을 적어 주세요!')) {
+        return;
+      }
+      if (!validateNewTodo(content, '내용을 적어 주세요!')) {
+        return;
+      }
+    },
+    {
       id: todo!.id,
       title,
       content,
-    });
-  };
-
-  const commitNothing = () => {
-    return;
-  };
+    },
+    () => {
+      return;
+    },
+  );
 
   return (
     <>
