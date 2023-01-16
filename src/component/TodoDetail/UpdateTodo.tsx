@@ -3,7 +3,7 @@ import { Todo } from 'api/todoApi';
 import { Box, Button, TextField } from '@mui/material';
 import DeleteTodoButton from './DeleteTodoButton';
 import UpdateTodoButton from './UpdateTodoButton';
-import { useRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 import { updateTodoState } from 'atom/todoDetail';
 interface Props {
   todo: Todo;
@@ -11,7 +11,7 @@ interface Props {
 
 function UpdateTodo({ todo }: Props) {
   let authToken: string | null = localStorage.getItem('authtoken');
-  const [isUpdateTodo, setIsUpdateTodo] = useRecoilState(updateTodoState);
+  const setIsUpdateTodo = useSetRecoilState(updateTodoState);
 
   useEffect(() => {
     return () => {

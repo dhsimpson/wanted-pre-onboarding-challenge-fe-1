@@ -3,7 +3,7 @@ import { useMutation } from 'react-query';
 import { useEffect, useState } from 'react';
 import { Button } from '@mui/material';
 import { updateTodoApi, Todo } from 'api/todoApi';
-import { useRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 import { updateTodoState } from 'atom/todoDetail';
 
 interface Props {
@@ -12,7 +12,7 @@ interface Props {
 
 function UpdateTodoButton({ todo }: Props) {
   let authToken: string | null = localStorage.getItem('authtoken');
-  const [isUpdateTodo, setIsUpdateTodo] = useRecoilState(updateTodoState);
+  const setIsUpdateTodo = useSetRecoilState(updateTodoState);
 
   const [open, setOpen] = useState(false);
   const [formRef, setFormRef] = useState({} as HTMLFormElement);

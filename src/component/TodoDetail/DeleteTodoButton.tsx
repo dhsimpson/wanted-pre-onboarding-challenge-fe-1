@@ -5,7 +5,7 @@ import { useMutation } from 'react-query';
 import { Todo } from 'api/todoApi';
 import { useEffect, useState } from 'react';
 import Button from '@mui/material/Button';
-import { useRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 import { updateTodoState } from 'atom/todoDetail';
 
 interface Props {
@@ -14,7 +14,8 @@ interface Props {
 
 function DeleteTodoButton({ todo }: Props) {
   let authToken: string | null = localStorage.getItem('authtoken');
-  const [isUpdateTodo, setIsUpdateTodo] = useRecoilState(updateTodoState);
+  const setIsUpdateTodo = useSetRecoilState(updateTodoState);
+
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
