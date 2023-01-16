@@ -27,7 +27,7 @@ export interface UpdateTodoRequest {
   content: string;
 }
 
-interface DeleteTodoRequest {
+export interface DeleteTodoRequest {
   id: string;
 }
 
