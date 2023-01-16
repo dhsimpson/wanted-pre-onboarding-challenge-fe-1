@@ -1,6 +1,6 @@
 import { Box, TextField, Button } from '@mui/material';
 import { Todo } from 'api/todoApi';
-import { useRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 import { updateTodoState } from 'atom/todoDetail';
 
 interface Props {
@@ -8,7 +8,7 @@ interface Props {
 }
 
 function ShowTodo({ todo }: Props) {
-  const [isUpdateTodo, setIsUpdateTodo] = useRecoilState(updateTodoState);
+  const setIsUpdateTodo = useSetRecoilState(updateTodoState);
 
   return (
     <Box>
