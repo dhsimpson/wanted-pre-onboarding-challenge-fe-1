@@ -5,6 +5,8 @@ import { Button } from '@mui/material';
 import { updateTodoApi, Todo } from 'api/todoApi';
 import { useSetRecoilState } from 'recoil';
 import { updateTodoState } from 'atom/todoDetail';
+import { validateNewTodo } from 'utils/validate';
+import { getFormInputData } from 'utils/formData';
 
 interface Props {
   todo: Todo;
@@ -36,18 +38,16 @@ function UpdateTodoButton({ todo }: Props) {
   const commitUpdate = () => {
     const data = new FormData(formRef as HTMLFormElement);
 
-    const title = data.get('title')?.toString() ?? '';
-    const content = data.get('content')?.toString() ?? '';
+    const title = getFormInputData(data, 'title');
+    const content = getFormInputData(data, 'content');
 
-    if (title.length == 0) {
-      alert('제목을 적어 주세요!');
+    if (!validateNewTodo(title, '제목을 적어 주세요!')) {
+      return;
+    }
+    if (!validateNewTodo(content, '내용을 적어 주세요!')) {
       return;
     }
 
-    if (content.length == 0) {
-      alert('내용을 적어 주세요!');
-      return;
-    }
     todoUpdateMutation.mutate({
       id: todo!.id,
       title,
