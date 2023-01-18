@@ -4,8 +4,6 @@ import { todoCreateApi } from 'api/todoApi';
 import { Box, Button, TextField, Divider } from '@mui/material';
 
 function AddTodo() {
-  let authToken: string | null = localStorage.getItem('authtoken');
-
   const [isAdd, setIsAdd] = useState(false);
 
   const todoCreateMutation = useMutation(todoCreateApi, {
@@ -34,17 +32,10 @@ function AddTodo() {
       return;
     }
     todoCreateMutation.mutate({
-      authToken: authToken!,
       title,
       content,
     });
   };
-
-  useEffect(() => {
-    return () => {
-      authToken = null;
-    };
-  });
 
   return (
     <>

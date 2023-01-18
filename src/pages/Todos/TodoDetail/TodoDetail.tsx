@@ -2,25 +2,24 @@ import { useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import { Todo, todoApi } from 'api/todoApi';
 import { useEffect } from 'react';
-import UpdateTodo from './UpdateTodo';
-import ShowTodo from './ShowTodo';
+import UpdateTodo from 'component/TodoDetail/UpdateTodo';
+import ShowTodo from 'component/TodoDetail/ShowTodo';
 import { Link } from 'react-router-dom';
 import { Button, Divider } from '@mui/material';
 import { updateTodoState } from 'atom/todoDetail';
-import { useRecoilState } from 'recoil';
+import { useRecoilValue } from 'recoil';
 
 function TodoDetail() {
   const { id } = useParams();
-  let authToken: string | null = localStorage.getItem('authtoken');
 
-  const { data, isLoading, error } = useQuery(['todo', id], () => todoApi(authToken ?? '', id ?? ''));
-  const [isUpdateTodo, setIsUpdateTodo] = useRecoilState(updateTodoState);
+  const { data, isLoading, error } = useQuery(['todo', id], () => todoApi(id ?? ''));
+
+  const isUpdateTodo = useRecoilValue(updateTodoState);
 
   let todo: Todo | undefined = data?.data?.data ?? undefined;
 
   useEffect(() => {
     return () => {
-      authToken = null;
       todo = undefined;
     };
   });
