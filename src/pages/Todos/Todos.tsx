@@ -5,9 +5,10 @@ import { Todo, todosApi } from 'api/todoApi';
 import AddTodo from 'component/TodoDetail/AddTodo';
 import TodoItem from 'component/TodoDetail/TodoItem';
 import { List } from '@mui/material';
+import { queryDefaultCacheOptions } from 'consts/time';
 
 function Todos() {
-  const { data, isLoading, error } = useQuery(['todos'], () => todosApi());
+  const { data, isLoading, error } = useQuery(['todos'], () => todosApi(), queryDefaultCacheOptions);
   //TODO : error 시에 alert 및 뒤로가기
 
   let todoList: Todo[] = data?.data?.data ?? [];

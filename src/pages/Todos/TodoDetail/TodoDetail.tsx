@@ -8,11 +8,12 @@ import { Link } from 'react-router-dom';
 import { Button, Divider } from '@mui/material';
 import { updateTodoState } from 'atom/todoDetail';
 import { useRecoilValue } from 'recoil';
+import { queryDefaultCacheOptions } from 'consts/time';
 
 function TodoDetail() {
   const { id } = useParams();
 
-  const { data, isLoading, error } = useQuery(['todo', id], () => todoApi(id ?? ''));
+  const { data, isLoading, error } = useQuery(['todo', id], () => todoApi(id ?? ''), queryDefaultCacheOptions);
 
   const isUpdateTodo = useRecoilValue(updateTodoState);
 
