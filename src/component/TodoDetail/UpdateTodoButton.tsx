@@ -1,5 +1,4 @@
 import YesNoModal from 'component/modal/YesNoModal';
-import { useMutation } from 'react-query';
 import { useEffect, useState } from 'react';
 import { Button } from '@mui/material';
 import { updateTodoApi, Todo } from 'api/todoApi';
@@ -10,7 +9,7 @@ import { getFormInputData } from 'utils/formData';
 import useTodo from 'hooks/useTodo';
 
 interface Props {
-  todo: Todo;
+  todo?: Todo;
 }
 
 function UpdateTodoButton({ todo }: Props) {

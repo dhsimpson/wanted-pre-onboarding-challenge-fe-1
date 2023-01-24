@@ -10,7 +10,13 @@ import Navigation from 'component/nav/Navigation';
 import customHistory from 'utils/history';
 import CustomRouter from 'component/common/CustomRouter';
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      suspense: true,
+    },
+  },
+});
 
 function App() {
   return (

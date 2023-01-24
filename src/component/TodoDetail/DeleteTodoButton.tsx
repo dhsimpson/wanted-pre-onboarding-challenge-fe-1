@@ -1,16 +1,15 @@
 import YesNoModal from 'component/modal/YesNoModal';
 import { useNavigate } from 'react-router-dom';
-import { deleteTodoApi, DeleteTodoRequest } from 'api/todoApi';
-import { useMutation } from 'react-query';
+import { deleteTodoApi } from 'api/todoApi';
 import { Todo } from 'api/todoApi';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Button from '@mui/material/Button';
 import { useSetRecoilState } from 'recoil';
 import { updateTodoState } from 'atom/todoDetail';
 import useTodo from 'hooks/useTodo';
 
 interface Props {
-  todo: Todo;
+  todo?: Todo;
 }
 
 function DeleteTodoButton({ todo }: Props) {
