@@ -1,34 +1,40 @@
-import React, { Component, ErrorInfo, ReactNode } from 'react';
+import React, { ErrorInfo, ReactNode } from 'react';
 
 interface Props {
   children?: ReactNode;
+  fallback: React.ElementType;
 }
 
 interface State {
   hasError: boolean;
+  info: Error | null;
 }
 
-class ErrorBoundary extends Component<Props, State> {
-  public state: State = {
-    hasError: false,
-  };
-
-  public static getDerivedStateFromError(_: Error): State {
-    // Update state so the next render will show the fallback UI.
-    return { hasError: true };
+class ErrorBoundary extends React.Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      hasError: false,
+      info: null,
+    };
   }
 
-  public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.error('Uncaught error:', error, errorInfo);
+  static getDerivedStateFromError(error: Error) {
+    return { hasError: true, info: error };
   }
 
-  public render() {
-    if (this.state.hasError) {
-      /** TODO : fallback 파라미터로 받도록 변경해줘야 한다. */
-      return <h1>Sorry.. there was an error</h1>;
+  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+    console.log('error: ', error);
+    console.log('errorInfo: ', errorInfo);
+  }
+
+  render() {
+    const { hasError, info } = this.state;
+    const { children } = this.props;
+    if (hasError) {
+      return <this.props.fallback error={info} />;
     }
-
-    return this.props.children;
+    return children;
   }
 }
 

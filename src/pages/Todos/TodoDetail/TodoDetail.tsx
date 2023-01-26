@@ -7,6 +7,7 @@ import { Button, Divider } from '@mui/material';
 import { updateTodoState } from 'atom/todoDetail';
 import { useRecoilValue } from 'recoil';
 import ErrorBoundary from 'component/common/ErrorBoundary';
+import Error from 'component/common/Error';
 
 function TodoDetail() {
   const { id } = useParams();
@@ -20,7 +21,7 @@ function TodoDetail() {
           접기
         </Button>
       </Link>
-      <ErrorBoundary>
+      <ErrorBoundary fallback={Error}>
         <Suspense fallback={<div>로딩중</div>}>
           {!isUpdateTodo ? <ShowTodo id={id}></ShowTodo> : <UpdateTodo id={id}></UpdateTodo>}
         </Suspense>

@@ -30,6 +30,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@emotion/react", "virtual:e47e54ad26381858dfb213ed42014296af44753a1b18ad1eac094a50191cfe227bd625900ff529fca74192fd996aed5cb5a2507f55cc7a030da5487784b765b3#npm:11.10.5"],\
             ["@emotion/styled", "virtual:e47e54ad26381858dfb213ed42014296af44753a1b18ad1eac094a50191cfe227bd625900ff529fca74192fd996aed5cb5a2507f55cc7a030da5487784b765b3#npm:11.10.5"],\
+            ["@mui/icons-material", "virtual:e47e54ad26381858dfb213ed42014296af44753a1b18ad1eac094a50191cfe227bd625900ff529fca74192fd996aed5cb5a2507f55cc7a030da5487784b765b3#npm:5.11.0"],\
             ["@mui/material", "virtual:e47e54ad26381858dfb213ed42014296af44753a1b18ad1eac094a50191cfe227bd625900ff529fca74192fd996aed5cb5a2507f55cc7a030da5487784b765b3#npm:5.11.1"],\
             ["@testing-library/jest-dom", "npm:5.16.5"],\
             ["@testing-library/react", "virtual:e47e54ad26381858dfb213ed42014296af44753a1b18ad1eac094a50191cfe227bd625900ff529fca74192fd996aed5cb5a2507f55cc7a030da5487784b765b3#npm:13.4.0"],\
@@ -3933,6 +3934,33 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@mui-core-downloads-tracker-npm-5.11.1-f6cfd378af-6faae7ffec.zip/node_modules/@mui/core-downloads-tracker/",\
           "packageDependencies": [\
             ["@mui/core-downloads-tracker", "npm:5.11.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@mui/icons-material", [\
+        ["npm:5.11.0", {\
+          "packageLocation": "./.yarn/cache/@mui-icons-material-npm-5.11.0-2a69112f17-764c1185b3.zip/node_modules/@mui/icons-material/",\
+          "packageDependencies": [\
+            ["@mui/icons-material", "npm:5.11.0"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:e47e54ad26381858dfb213ed42014296af44753a1b18ad1eac094a50191cfe227bd625900ff529fca74192fd996aed5cb5a2507f55cc7a030da5487784b765b3#npm:5.11.0", {\
+          "packageLocation": "./.yarn/__virtual__/@mui-icons-material-virtual-29909c3c96/0/cache/@mui-icons-material-npm-5.11.0-2a69112f17-764c1185b3.zip/node_modules/@mui/icons-material/",\
+          "packageDependencies": [\
+            ["@mui/icons-material", "virtual:e47e54ad26381858dfb213ed42014296af44753a1b18ad1eac094a50191cfe227bd625900ff529fca74192fd996aed5cb5a2507f55cc7a030da5487784b765b3#npm:5.11.0"],\
+            ["@babel/runtime", "npm:7.20.7"],\
+            ["@mui/material", "virtual:e47e54ad26381858dfb213ed42014296af44753a1b18ad1eac094a50191cfe227bd625900ff529fca74192fd996aed5cb5a2507f55cc7a030da5487784b765b3#npm:5.11.1"],\
+            ["@types/mui__material", null],\
+            ["@types/react", "npm:18.0.26"],\
+            ["react", "npm:18.2.0"]\
+          ],\
+          "packagePeers": [\
+            "@mui/material",\
+            "@types/mui__material",\
+            "@types/react",\
+            "react"\
           ],\
           "linkType": "HARD"\
         }]\
@@ -17661,6 +17689,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["wanted-pre-onboarding-challenge-fe-1", "workspace:."],\
             ["@emotion/react", "virtual:e47e54ad26381858dfb213ed42014296af44753a1b18ad1eac094a50191cfe227bd625900ff529fca74192fd996aed5cb5a2507f55cc7a030da5487784b765b3#npm:11.10.5"],\
             ["@emotion/styled", "virtual:e47e54ad26381858dfb213ed42014296af44753a1b18ad1eac094a50191cfe227bd625900ff529fca74192fd996aed5cb5a2507f55cc7a030da5487784b765b3#npm:11.10.5"],\
+            ["@mui/icons-material", "virtual:e47e54ad26381858dfb213ed42014296af44753a1b18ad1eac094a50191cfe227bd625900ff529fca74192fd996aed5cb5a2507f55cc7a030da5487784b765b3#npm:5.11.0"],\
             ["@mui/material", "virtual:e47e54ad26381858dfb213ed42014296af44753a1b18ad1eac094a50191cfe227bd625900ff529fca74192fd996aed5cb5a2507f55cc7a030da5487784b765b3#npm:5.11.1"],\
             ["@testing-library/jest-dom", "npm:5.16.5"],\
             ["@testing-library/react", "virtual:e47e54ad26381858dfb213ed42014296af44753a1b18ad1eac094a50191cfe227bd625900ff529fca74192fd996aed5cb5a2507f55cc7a030da5487784b765b3#npm:13.4.0"],\
