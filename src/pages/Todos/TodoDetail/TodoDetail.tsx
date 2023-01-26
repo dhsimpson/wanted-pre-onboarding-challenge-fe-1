@@ -1,13 +1,13 @@
 import { useParams } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
-const UpdateTodo = lazy(() => import('component/TodoDetail/UpdateTodo'));
-const ShowTodo = lazy(() => import('component/TodoDetail/ShowTodo'));
 import { Link } from 'react-router-dom';
 import { Button, Divider } from '@mui/material';
 import { updateTodoState } from 'atom/todoDetail';
 import { useRecoilValue } from 'recoil';
 import ErrorBoundary from 'component/common/ErrorBoundary';
 import Error from 'component/common/Error';
+const UpdateTodo = lazy(() => import('component/TodoDetail/UpdateTodo'));
+const ShowTodo = lazy(() => import('component/TodoDetail/ShowTodo'));
 
 function TodoDetail() {
   const { id } = useParams();

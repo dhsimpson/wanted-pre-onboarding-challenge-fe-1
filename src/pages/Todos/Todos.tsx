@@ -9,18 +9,18 @@ function Todos() {
   console.log('todos');
 
   return (
-    <div>
+    <ErrorBoundary fallback={Error}>
       <div>
-        목록 영역
-        <ErrorBoundary fallback={Error}>
+        <div>
+          목록 영역
           <Suspense fallback={<div>로딩중</div>}>
             <TodoList />
           </Suspense>
           <AddTodo />
-        </ErrorBoundary>
+        </div>
+        <Outlet></Outlet>
       </div>
-      <Outlet></Outlet>
-    </div>
+    </ErrorBoundary>
   );
 }
 export default Todos;

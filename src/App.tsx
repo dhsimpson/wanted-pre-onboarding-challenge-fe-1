@@ -9,11 +9,13 @@ import Navigation from 'component/nav/Navigation';
 
 import customHistory from 'utils/history';
 import CustomRouter from 'component/common/CustomRouter';
+// import ErrorBoundary from 'component/common/ErrorBoundary';
 
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       suspense: true,
+      //   useErrorBoundary: true,
     },
   },
 });

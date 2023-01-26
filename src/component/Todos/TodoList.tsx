@@ -5,7 +5,7 @@ import { List } from '@mui/material';
 import TodoItem from 'component/TodoDetail/TodoItem';
 
 function TodoList() {
-  const { data } = useQuery(['todos'], () => todosApi(), { ...queryDefaultCacheOptions, retry: 1 });
+  const { data } = useQuery(['todos'], () => todosApi(), { ...queryDefaultCacheOptions, retry: false });
   const todoList: Todo[] = data?.data?.data ?? [];
   return (
     <>
