@@ -2,14 +2,12 @@ import { AxiosResponse } from 'axios';
 import { useMutation } from 'react-query';
 
 const useTodo = (
-  handleClickOpen: (e: React.MouseEvent<HTMLButtonElement>) => void,
   mutationApi: (req: any) => Promise<AxiosResponse<any, any>>, // any vs Generic??
   onSuccess: () => void,
   onError: (e: unknown) => void,
   commitMutationFunction: () => void,
   commitMutationParam: any,
-  commitNothing: () => void,
-): [(e: React.MouseEvent<HTMLButtonElement>) => void, () => void, () => void] => {
+): [() => void] => {
   const todoMutation = useMutation(mutationApi, {
     onSuccess: data => {
       onSuccess();
@@ -24,7 +22,7 @@ const useTodo = (
     todoMutation.mutate(commitMutationParam);
   };
 
-  return [handleClickOpen, commitMutation, commitNothing];
+  return [commitMutation];
 };
 
 export default useTodo;

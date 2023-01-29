@@ -42,6 +42,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react", "npm:18.0.26"],\
             ["@types/react-dom", "npm:18.0.10"],\
             ["@types/react-router-dom", "npm:5.3.3"],\
+            ["@types/recoil", "npm:0.0.9"],\
             ["@types/testing-library__jest-dom", "npm:5.14.5"],\
             ["@typescript-eslint/eslint-plugin", "virtual:e47e54ad26381858dfb213ed42014296af44753a1b18ad1eac094a50191cfe227bd625900ff529fca74192fd996aed5cb5a2507f55cc7a030da5487784b765b3#npm:5.47.0"],\
             ["@typescript-eslint/parser", "virtual:e47e54ad26381858dfb213ed42014296af44753a1b18ad1eac094a50191cfe227bd625900ff529fca74192fd996aed5cb5a2507f55cc7a030da5487784b765b3#npm:5.47.0"],\
@@ -5131,6 +5132,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@types/react-transition-group", "npm:4.4.5"],\
             ["@types/react", "npm:18.0.26"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@types/recoil", [\
+        ["npm:0.0.9", {\
+          "packageLocation": "./.yarn/cache/@types-recoil-npm-0.0.9-9e149d4cf7-f4209a72db.zip/node_modules/@types/recoil/",\
+          "packageDependencies": [\
+            ["@types/recoil", "npm:0.0.9"],\
+            ["recoil", "virtual:9e149d4cf747e223f31d1a68bf054697da78f0a8c1bc43aae7fe0a27d9e74a0102eacd3e97af27444ae6eee3a2dc09df5c124d4e233492c2db4ca50ca3a51378#npm:0.7.6"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -15616,6 +15627,28 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "SOFT"\
         }],\
+        ["virtual:9e149d4cf747e223f31d1a68bf054697da78f0a8c1bc43aae7fe0a27d9e74a0102eacd3e97af27444ae6eee3a2dc09df5c124d4e233492c2db4ca50ca3a51378#npm:0.7.6", {\
+          "packageLocation": "./.yarn/__virtual__/recoil-virtual-200a8faff0/0/cache/recoil-npm-0.7.6-6f8de04e3d-2b31dd29a7.zip/node_modules/recoil/",\
+          "packageDependencies": [\
+            ["recoil", "virtual:9e149d4cf747e223f31d1a68bf054697da78f0a8c1bc43aae7fe0a27d9e74a0102eacd3e97af27444ae6eee3a2dc09df5c124d4e233492c2db4ca50ca3a51378#npm:0.7.6"],\
+            ["@types/react", null],\
+            ["@types/react-dom", null],\
+            ["@types/react-native", null],\
+            ["hamt_plus", "npm:1.0.2"],\
+            ["react", null],\
+            ["react-dom", null],\
+            ["react-native", null]\
+          ],\
+          "packagePeers": [\
+            "@types/react-dom",\
+            "@types/react-native",\
+            "@types/react",\
+            "react-dom",\
+            "react-native",\
+            "react"\
+          ],\
+          "linkType": "HARD"\
+        }],\
         ["virtual:e47e54ad26381858dfb213ed42014296af44753a1b18ad1eac094a50191cfe227bd625900ff529fca74192fd996aed5cb5a2507f55cc7a030da5487784b765b3#npm:0.7.6", {\
           "packageLocation": "./.yarn/__virtual__/recoil-virtual-ff36761fb7/0/cache/recoil-npm-0.7.6-6f8de04e3d-2b31dd29a7.zip/node_modules/recoil/",\
           "packageDependencies": [\
@@ -17701,6 +17734,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react", "npm:18.0.26"],\
             ["@types/react-dom", "npm:18.0.10"],\
             ["@types/react-router-dom", "npm:5.3.3"],\
+            ["@types/recoil", "npm:0.0.9"],\
             ["@types/testing-library__jest-dom", "npm:5.14.5"],\
             ["@typescript-eslint/eslint-plugin", "virtual:e47e54ad26381858dfb213ed42014296af44753a1b18ad1eac094a50191cfe227bd625900ff529fca74192fd996aed5cb5a2507f55cc7a030da5487784b765b3#npm:5.47.0"],\
             ["@typescript-eslint/parser", "virtual:e47e54ad26381858dfb213ed42014296af44753a1b18ad1eac094a50191cfe227bd625900ff529fca74192fd996aed5cb5a2507f55cc7a030da5487784b765b3#npm:5.47.0"],\

@@ -29,13 +29,12 @@ function UpdateTodoButton({ todo }: Props) {
       setContent(getFormInputData(data, 'content'));
     }
   }, [formRef, title, content]);
-
-  const [handleClickOpen, commitUpdate, commitNothing] = useTodo(
-    (e: React.MouseEvent<HTMLButtonElement>) => {
-      const t = e.target as HTMLFormElement;
-      setFormRef(t.form);
-      setOpenModal(true);
-    },
+  const handleClickOpen = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const t = e.target as HTMLFormElement;
+    setFormRef(t.form);
+    setOpenModal(true);
+  };
+  const [commitUpdate] = useTodo(
     updateTodoApi,
     () => {
       alert('업데이트 완료!');
@@ -58,9 +57,6 @@ function UpdateTodoButton({ todo }: Props) {
       title,
       content,
     },
-    () => {
-      return;
-    },
   );
 
   return (
@@ -73,7 +69,9 @@ function UpdateTodoButton({ todo }: Props) {
         setOpenModal={setOpenModal}
         message="정말로 수정하시겠습니까?"
         clickYesCallback={commitUpdate}
-        clickNoCallback={commitNothing}
+        clickNoCallback={() => {
+          return;
+        }}
       />
     </>
   );

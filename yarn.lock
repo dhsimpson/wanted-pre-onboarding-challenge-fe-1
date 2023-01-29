@@ -3249,6 +3249,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/recoil@npm:^0.0.9":
+  version: 0.0.9
+  resolution: "@types/recoil@npm:0.0.9"
+  dependencies:
+    recoil: "*"
+  checksum: f4209a72dbbef74f3ba128678b0e9a24752273e5ae468c8ed51a6e5562561c214c250218224664410ca4d7f5f3764c1f657264bca0e09e63d52bfb53412e7cac
+  languageName: node
+  linkType: hard
+
 "@types/resolve@npm:1.17.1":
   version: 1.17.1
   resolution: "@types/resolve@npm:1.17.1"
@@ -11461,7 +11470,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"recoil@npm:^0.7.6":
+"recoil@npm:*, recoil@npm:^0.7.6":
   version: 0.7.6
   resolution: "recoil@npm:0.7.6"
   dependencies:
@@ -13281,6 +13290,7 @@ __metadata:
     "@types/react": ^18.0.0
     "@types/react-dom": ^18.0.0
     "@types/react-router-dom": ^5.3.3
+    "@types/recoil": ^0.0.9
     "@types/testing-library__jest-dom": ^5
     "@typescript-eslint/eslint-plugin": ^5.47.0
     "@typescript-eslint/parser": ^5.47.0

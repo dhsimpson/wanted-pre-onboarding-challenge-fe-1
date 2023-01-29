@@ -6,8 +6,6 @@ import Error from 'component/common/Error';
 const TodoList = lazy(() => import('component/Todos/TodoList'));
 
 function Todos() {
-  console.log('todos');
-
   return (
     <ErrorBoundary fallback={Error}>
       <div>
