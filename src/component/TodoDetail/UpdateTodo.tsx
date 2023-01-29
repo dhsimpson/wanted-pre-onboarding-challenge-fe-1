@@ -1,19 +1,15 @@
-import { useEffect } from 'react';
-import { Todo } from 'api/todoApi';
 import { Box, Button, TextField } from '@mui/material';
 import DeleteTodoButton from './DeleteTodoButton';
 import UpdateTodoButton from './UpdateTodoButton';
 import { useSetRecoilState } from 'recoil';
 import { updateTodoState } from 'atom/todoDetail';
 import useTodoDetail from 'hooks/useTodoDetail';
+import { useParams } from 'react-router-dom';
 
-interface Props {
-  id: string;
-}
-
-function UpdateTodo({ id }: Props) {
+function UpdateTodo() {
   const setIsUpdateTodo = useSetRecoilState(updateTodoState);
-  const { data } = useTodoDetail(id);
+  const { id } = useParams();
+  const { data } = useTodoDetail(id as string);
 
   return (
     <Box component="form" id="updateTodo">

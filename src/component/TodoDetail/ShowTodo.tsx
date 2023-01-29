@@ -2,15 +2,13 @@ import { Box, TextField, Button } from '@mui/material';
 import { useSetRecoilState } from 'recoil';
 import { updateTodoState } from 'atom/todoDetail';
 import useTodoDetail from 'hooks/useTodoDetail';
+import { useParams } from 'react-router-dom';
 
-interface Props {
-  id: string;
-}
-
-function ShowTodo({ id }: Props) {
+function ShowTodo() {
+  const { id } = useParams();
+  const { data } = useTodoDetail(id as string);
   const setIsUpdateTodo = useSetRecoilState(updateTodoState);
 
-  const { data } = useTodoDetail(id);
   return (
     <Box>
       <TextField disabled label="제목" multiline rows={1} value={data?.data?.data.title} />

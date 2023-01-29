@@ -1,13 +1,14 @@
 import React, { ErrorInfo, ReactNode } from 'react';
-
 interface Props {
   children?: ReactNode;
   fallback: React.ElementType;
+  id?: string;
 }
 
 interface State {
   hasError: boolean;
   info: Error | null;
+  id?: string;
 }
 
 class ErrorBoundary extends React.Component<Props, State> {
@@ -16,6 +17,7 @@ class ErrorBoundary extends React.Component<Props, State> {
     this.state = {
       hasError: false,
       info: null,
+      id: undefined,
     };
   }
 
@@ -30,7 +32,13 @@ class ErrorBoundary extends React.Component<Props, State> {
 
   render() {
     const { hasError, info } = this.state;
+
     const { children } = this.props;
+
+    if (this.props.id !== this.state.id) {
+      this.setState({ hasError: false, info: null, id: this.props.id });
+    }
+
     if (hasError) {
       return (
         <button
