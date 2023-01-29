@@ -6,8 +6,8 @@ import { updateTodoState } from 'atom/todoDetail';
 import { useRecoilValue } from 'recoil';
 import ErrorBoundary from 'component/common/ErrorBoundary';
 import ErrorFallback from 'component/common/ErrorFallback';
-const UpdateTodo = lazy(() => import('component/TodoDetail/UpdateTodo'));
 const ShowTodo = lazy(() => import('component/TodoDetail/ShowTodo'));
+const UpdateTodo = lazy(() => import('component/TodoDetail/UpdateTodo'));
 
 function TodoDetail() {
   const { id } = useParams();

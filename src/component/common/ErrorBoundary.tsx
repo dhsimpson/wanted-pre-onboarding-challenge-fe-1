@@ -24,8 +24,8 @@ class ErrorBoundary extends React.Component<Props, State> {
   }
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.log('error: ', error);
-    console.log('errorInfo: ', errorInfo);
+    // console.log('error: ', error);
+    // console.log('errorInfo: ', errorInfo);
   }
 
   render() {
@@ -38,7 +38,7 @@ class ErrorBoundary extends React.Component<Props, State> {
             this.setState({ hasError: false, info: null });
           }}
         >
-          <this.props.fallback hasError={hasError} error={info} />
+          <this.props.fallback error={info} />
         </button>
       );
     }
