@@ -1,42 +1,24 @@
-import { useEffect } from 'react';
-import { useQuery } from 'react-query';
+import { lazy, Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
-import { Todo, todosApi } from 'api/todoApi';
 import AddTodo from 'component/TodoDetail/AddTodo';
-import TodoItem from 'component/TodoDetail/TodoItem';
-import { List } from '@mui/material';
+import ErrorBoundary from 'component/common/ErrorBoundary';
+import ErrorFallback from 'component/common/ErrorFallback';
+const TodoList = lazy(() => import('component/Todos/TodoList'));
 
 function Todos() {
-  const { data, isLoading, error } = useQuery(['todos'], () => todosApi());
-  //TODO : error 시에 alert 및 뒤로가기
-
-  let todoList: Todo[] = data?.data?.data ?? [];
-
-  useEffect(() => {
-    return () => {
-      todoList = [];
-    };
-  }, [todoList]);
-
   return (
-    <div>
+    <ErrorBoundary fallback={ErrorFallback}>
       <div>
-        목록 영역
-        {isLoading ? (
-          <div>loading</div>
-        ) : (
-          <>
-            {todoList.map((todo, idx) => (
-              <List key={idx}>
-                <TodoItem todo={todo}></TodoItem>
-              </List>
-            ))}
-          </>
-        )}
-        <AddTodo />
+        <div>
+          목록 영역
+          <Suspense fallback={<div>로딩중</div>}>
+            <TodoList />
+          </Suspense>
+          <AddTodo />
+        </div>
+        <Outlet></Outlet>
       </div>
-      <Outlet></Outlet>
-    </div>
+    </ErrorBoundary>
   );
 }
 export default Todos;
