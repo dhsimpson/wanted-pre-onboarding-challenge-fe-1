@@ -33,7 +33,7 @@ export interface DeleteTodoRequest {
 
 export const todosApi = () => axiosClient.get<any, TodosResponse>('/todos');
 
-export const todoApi = (id: string) => axiosClient.get<any, TodoResponse>(`/todos/${id}`);
+export const todoApi = (id: string) => axiosClient.get<any, TodoResponse>(`/todos/${id}`, { timeout: 500 }); // 강제로 랜덤 timeout 발생
 
 export const todoCreateApi = (req: CreateTodoRequest) =>
   axiosClient.post(`/todos`, {

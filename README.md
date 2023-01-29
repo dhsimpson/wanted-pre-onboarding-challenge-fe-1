@@ -62,6 +62,11 @@
   - [x] 한 페이지 내에서 새로고침 없이 데이터가 정합성을 갖추도록 구현해주세요
   - [x] 수정되는 Todo의 내용이 목록에서도 실시간으로 반영되어야 합니다
 
+프리온보딩 끝나고 추가 작업 TODO
+
+- [] suspense, error-boundary 적용 (재사용 가능한 error-boundary? [카카오](https://fe-developers.kakaoent.com/2022/221110-error-boundary/))
+- [] react-query 의 기능 제대로 이용해 보기 (캐싱같은 것이나 강의 내용에 있던 react-query 의 다양한 hook 기능들. 그리고, react-query 가 전역 state 관리를 해준다는 점을 이용해 보기??)
+
   <br/>
 
 # 개발 전략 : git flow
