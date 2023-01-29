@@ -8,7 +8,7 @@ import { updateTodoState } from 'atom/todoDetail';
 import useTodoDetail from 'hooks/useTodoDetail';
 
 interface Props {
-  id?: string;
+  id: string;
 }
 
 function UpdateTodo({ id }: Props) {

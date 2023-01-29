@@ -1,7 +1,7 @@
 import RefreshIcon from '@mui/icons-material/Refresh';
 
-function Error() {
+function ErrorFallback() {
   return <RefreshIcon></RefreshIcon>;
 }
 
-export default Error;
+export default ErrorFallback;
