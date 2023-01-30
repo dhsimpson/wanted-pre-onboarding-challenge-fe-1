@@ -1,6 +1,6 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
-import { QueryClientProvider, QueryClient } from 'react-query';
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import Main from 'pages/main/Main';
 import Auth from 'pages/Auth/Auth';
 import Todos from 'pages/Todos/Todos';

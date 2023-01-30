@@ -1,4 +1,4 @@
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 import { Todo, todosApi } from 'api/todoApi';
 import { queryDefaultCacheOptions } from 'consts/time';
 import { List } from '@mui/material';

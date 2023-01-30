@@ -1,6 +1,6 @@
 import { TextField, Button, Box, Grid } from '@mui/material';
 import { useState } from 'react';
-import { useMutation } from 'react-query';
+import { useMutation } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import { authApi } from 'api/authApi';
 

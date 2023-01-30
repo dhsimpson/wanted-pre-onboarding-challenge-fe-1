@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import { useMutation } from 'react-query';
+import { useMutation } from '@tanstack/react-query';
 
 const useTodo = (
   mutationApi: (req: any) => Promise<AxiosResponse<any, any>>, // any vs Generic??
