@@ -1,15 +1,18 @@
 import YesNoModal from 'component/modal/YesNoModal';
 import { Button } from '@mui/material';
-import { Todo } from 'api/todoApi';
 import useUpdateTodo from 'hooks/useUpdateTodo';
 import { Dispatch, SetStateAction } from 'react';
+import { UseFormHandleSubmit, FieldValues } from 'react-hook-form';
+import { Todo } from 'api/todoApi';
 
 interface Props {
   todo?: Todo;
+  handleSubmit: UseFormHandleSubmit<FieldValues>;
 }
 
-function UpdateTodoButton({ todo }: Props) {
-  const [handleClickOpen, openModal, setOpenModal, commitUpdate, commitNo] = useUpdateTodo(todo);
+function UpdateTodoButton({ todo, handleSubmit }: Props) {
+  const [handleClickOpen, openModal, setOpenModal, commitUpdate, commitNo] = useUpdateTodo(todo, handleSubmit);
+
   return (
     <>
       <Button
